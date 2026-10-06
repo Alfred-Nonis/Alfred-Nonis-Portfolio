@@ -31,7 +31,6 @@ export function Navbar() {
             </div>
           </details>
         </div>
-        <NavLink to="/about" className={navClass} onClick={close}>About</NavLink>
         <NavLink to="/contact" className={navClass} onClick={close}>Contact</NavLink>
       </nav>
     </div>
