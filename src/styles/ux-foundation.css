@@ -171,6 +171,70 @@ dialog.lightbox::backdrop { background: #27323aeb; }
   .lightbox figure { max-height: calc(100dvh - 24px); }
 }
 
+/* Desktop density correction: preserves current mobile/tablet size and touch targets. */
+@media (min-width: 1024px) {
+  :root { --max-width: 1020px; --section-gap: clamp(60px, 4vw, 76px); }
+  .nav-shell { min-height: 58px; padding-inline: 24px; }
+  .brand { font-size: .96rem; }
+  .brand-mark { width: 28px; height: 28px; }
+  .primary-nav { gap: 13px; font-size: .95rem; }
+  .nav-link { min-height: 40px; }
+  .nav-disclosure { min-width: 40px; min-height: 40px; }
+  .nav-dropdown { width: clamp(205px, 19vw, 250px); }
+
+  .hero { gap: clamp(34px, 3vw, 46px); padding-block: 58px; }
+  .hero-content { max-width: 560px; }
+  .hero h1 { font-size: clamp(2.55rem, 3.8vw, 3.9rem); }
+  .hero h1 span { font-size: clamp(1rem, 1.3vw, 1.14rem); margin-top: 10px; }
+  .hero-line { font-size: .82rem; }
+  .hero-bio { max-width: 54ch; margin-block: 16px 22px; font-size: .94rem; line-height: 1.62; }
+  .hero-actions { gap: 8px; }
+  .hero-actions .button { min-height: 44px; padding: 10px 15px; font-size: .82rem; }
+  .hero-photo { max-width: 390px; justify-self: end; }
+  .hero-photo img { max-height: 420px; }
+
+  .page-section { padding-block: 56px; }
+  .section-heading { margin-bottom: 26px; }
+  .section-heading h2 { font-size: clamp(1.65rem, 2.6vw, 2.3rem); }
+  .project-grid, .experience-grid { gap: 18px; }
+  .project-card-image, .project-card-image .media, .project-card-image .media-button { height: 200px; }
+  .project-card-cover { min-height: 200px; padding: 16px; }
+  .project-card-content { min-height: 196px; padding: 16px 17px; }
+  .project-card h3 { font-size: 1.08rem; }
+  .project-card p { font-size: .82rem; }
+  .experience-card { padding: 22px; }
+  .experience-card h2, .experience-card h3 { font-size: clamp(1.1rem, 1.6vw, 1.35rem); }
+  .experience-period { margin-bottom: 14px; }
+
+  .home-skills { padding-block: 54px; }
+  .skill-groups { gap: 22px; }
+  .skill-chips { gap: 7px; }
+  .skill-chips li { padding: 6px 11px; font-size: .8rem; }
+  .home-approach { gap: 42px; padding-block: 52px; }
+  .home-approach h2 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); }
+  .home-contact-cta { padding-block: 50px; }
+
+  .inner-page { padding-block: 56px 70px; }
+  .page-intro { margin-bottom: 28px; }
+  .page-intro h1 { font-size: clamp(2rem, 3.6vw, 3.35rem); margin-bottom: 13px; }
+  .page-intro > p:last-child { font-size: 1rem; }
+  .project-detail { padding-block: 18px 62px; }
+  .project-detail > .breadcrumbs, .project-detail > .project-hero, .project-detail > .project-summary, .project-detail > .case-study, .project-detail > .project-end { width: min(970px, calc(100% - 48px)); }
+  .breadcrumbs { padding-top: 20px; margin-bottom: 16px; }
+  .project-hero { gap: 42px; padding-bottom: 38px; }
+  .project-hero h1 { font-size: clamp(2rem, 3.5vw, 3.2rem); }
+  .project-hero-image, .project-hero-image .media { height: 290px; }
+  .project-summary { margin-block: 36px; padding-left: 18px; }
+  .project-summary p { font-size: 1.02rem; }
+  .section-chapter { padding-block: clamp(30px, 4.8vw, 64px); }
+  .section-chapter h2, .project-section h2 { font-size: clamp(1.4rem, 2.2vw, 1.8rem); }
+  .section-chapter .project-slideshow { margin-top: 22px; }
+  .slideshow-slide .media-button { height: clamp(220px, 40vw, 460px); }
+  .slideshow-slide figcaption { padding: 12px 14px; }
+  .slideshow-controls { gap: 14px; padding-bottom: 10px; }
+  .slideshow-controls button { width: 40px; height: 40px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scroll-chapter, .hero-aside { opacity: 1 !important; transform: none !important; }
   .nav-dropdown { animation: none; }

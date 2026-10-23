@@ -30,8 +30,8 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background-image: radial-gradient(circle, #2e70a526 .8px, transparent 1px), linear-gradient(#2e70a510 1px, transparent 1px), linear-gradient(90deg, #2e70a510 1px, transparent 1px);
-  background-size: 28px 28px, 140px 140px, 140px 140px;
-  background-position: 0 0, 14px 14px, 14px 14px;
+  background-size: 22px 22px, 100px 100px, 100px 100px;
+  background-position: 0 0, 11px 11px, 11px 11px;
 }
 
 .site-header { background: rgba(255, 255, 255, .97); border-bottom-color: var(--border); box-shadow: none; }
