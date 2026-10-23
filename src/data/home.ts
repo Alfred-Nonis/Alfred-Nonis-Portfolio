@@ -9,7 +9,7 @@ export const home = {
   // Engineering skills supplied in the polish brief; software tools documented in experience.ts.
   skillGroups: [
     { label: 'Design & analysis', skills: ['SolidWorks', 'ANSYS', 'MATLAB', 'Autodesk Inventor', 'Autodesk Revit'] },
-    { label: 'Fabrication & prototyping', skills: ['TIG Welding', '3D Printing', 'Laser Cutting'] },
+    { label: 'Fabrication & prototyping', skills: ['TIG Welding', 'Jigging', '3D Printing', 'Laser Cutting'] },
     { label: 'AI & software', skills: ['Codex', 'CrewAI', 'RAG', 'Semantic Search', 'USPTO API'] },
   ],
   approachEyebrow: 'Engineering approach',

@@ -3,6 +3,9 @@
   --background-secondary: #F8FAFB;
   --surface-blue: #DDE8F2;
   --surface: #F8FAFB;
+  --surface-card: #FFFFFF;
+  --media-well: #EEF3F7;
+  --section-gap: clamp(72px, 5vw, 96px);
   --surface-hover: #E7F0F7;
   --border: #C5D5E2;
   --border-strong: #a9c0d2;
@@ -18,7 +21,18 @@
 }
 
 html, body { background: var(--background); color: var(--text-primary); }
-body { background: var(--background); }
+body { background: var(--background); isolation: isolate; }
+/* Static drafting dots with wider construction guides, visible between surfaces. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #2e70a526 .8px, transparent 1px), linear-gradient(#2e70a510 1px, transparent 1px), linear-gradient(90deg, #2e70a510 1px, transparent 1px);
+  background-size: 28px 28px, 140px 140px, 140px 140px;
+  background-position: 0 0, 14px 14px, 14px 14px;
+}
 
 .site-header { background: rgba(255, 255, 255, .97); border-bottom-color: var(--border); box-shadow: none; }
 .nav-shell { min-height: 66px; }

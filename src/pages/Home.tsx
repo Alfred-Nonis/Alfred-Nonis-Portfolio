@@ -23,13 +23,13 @@ export function Home() {
       </div>
       {profile.heroImage && <figure className="hero-photo"><img src={profile.heroImage} alt={profile.heroAlt} fetchPriority="high" /></figure>}
     </section>
-    <section className="page-section featured"><div className="section-heading"><div><p className="eyebrow">{home.selectedWork}</p><h2>{home.projectsTitle}</h2></div><Link className="text-link" to="/projects">View all projects <span aria-hidden="true">→</span></Link></div><div className="project-grid">{projects.filter(project => project.featured).map(project => <ProjectCard project={project} key={project.slug} />)}</div></section>
     <section className="page-section home-experience" aria-labelledby="home-experience-title">
       <div className="section-heading"><div><p className="eyebrow">{home.experienceEyebrow}</p><h2 id="home-experience-title">{home.experienceTitle}</h2></div>
         <Link className="text-link" to="/experience">View Industry Experience <span aria-hidden="true">→</span></Link>
       </div>
       <div className="experience-grid">{experiences.map(experience => <ExperienceCard key={experience.slug} experience={experience} compact />)}</div>
     </section>
+    <section className="page-section featured"><div className="section-heading"><div><p className="eyebrow">{home.selectedWork}</p><h2>{home.projectsTitle}</h2></div><Link className="text-link" to="/projects">View all projects <span aria-hidden="true">→</span></Link></div><div className="project-grid">{projects.filter(project => project.featured).map(project => <ProjectCard project={project} key={project.slug} />)}</div></section>
     <section className="page-section home-skills" aria-labelledby="skills-title">
       <h2 id="skills-title">{home.skillsTitle}</h2>
       <div className="skill-groups">{home.skillGroups.map(group => <div key={group.label}><h3>{group.label}</h3><ul className="skill-chips">{group.skills.map(skill => <li key={skill}>{skill}</li>)}</ul></div>)}</div>

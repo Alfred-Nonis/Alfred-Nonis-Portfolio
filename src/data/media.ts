@@ -22,20 +22,25 @@ export function filenameCaption(filename: string): string {
 
 export function chapterImages(chapter: ProjectChapter): ProjectImage[] {
   const overrides = chapter.mediaOverrides ?? {}
-  const explicit = (chapter.images ?? []).map(image => ({ ...image, ...overrides[image.src.split('/').pop() ?? ''] }))
+  const explicit = (chapter.images ?? []).map(image => {
+    const filename = image.src.split('/').pop() ?? ''
+    return { filename, image: { ...image, ...overrides[filename] } }
+  })
   const folderFiles = mediaByFolder[chapter.mediaFolder ?? ''] ?? []
   const discovered = folderFiles.map(({ filename, src }) => {
     const caption = filenameCaption(filename)
-    return { src, alt: caption, caption, ...overrides[filename] }
+    return { filename, image: { src, alt: caption, caption, ...overrides[filename] } }
   })
   const seen = new Set<string>()
-  // Curated images retain their order. Numbered copies of existing filenames are skipped.
-  return [...explicit, ...discovered].filter(image => {
-    const original = folderFiles.find(file => file.src === image.src)
-    const key = imageKey(original?.filename ?? image.src)
-    if (seen.has(key) || seen.has(image.src)) return false
-    seen.add(key)
-    seen.add(image.src)
-    return true
-  })
+  // Preserve curated metadata when a numbered copy of a legacy file is added.
+  // Numbering is optional; distinct new files such as 01-photo / 02-photo both work.
+  const legacyNames = new Set(explicit.map(({ filename }) => imageKey(filename)))
+  return [...explicit, ...discovered.filter(({ filename }) => !legacyNames.has(imageKey(filename)))]
+    .sort((a, b) => a.filename.localeCompare(b.filename, 'en'))
+    .filter(({ image }) => {
+      if (seen.has(image.src)) return false
+      seen.add(image.src)
+      return true
+    })
+    .map(({ image }) => image)
 }
