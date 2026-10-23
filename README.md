@@ -23,7 +23,7 @@ The production website is generated in `dist/`.
 
 Update your name, email, LinkedIn, GitHub, resume path, and bio in `src/config/profile.ts`.
 
-Place your resume at `public/resume/resume.pdf`.
+Place your resume at `public/resume/alfred-nonis-resume.pdf`.
 
 ## Updating the Portfolio with Codex
 
@@ -43,30 +43,50 @@ Add the following information to the REACT magnetometer section:
 Add a new project called ______ using the existing project architecture.
 ```
 
-## Adding Project Images
+## Editing portfolio content
 
-1. Put the image in its matching folder under `public/images/`.
-2. Open `src/data/projects.ts` and find the project’s `image-grid` section.
-3. Add an image object with `src`, `alt`, and `caption`.
-4. Save, then run `npm run dev`.
+- **Text:** projects in `src/data/projects.ts`; experience in `src/data/experience.ts`; home sections and skills in `src/data/home.ts`; hero/profile/contact in `src/config/profile.ts`.
+- **Images:** drag files into the matching chapter folder below. PNG, JPG, JPEG, WebP and AVIF (including uppercase extensions) appear automatically. Empty folders render nothing.
+- **Order:** use numbered descriptive filenames: `01-initial-sketch.jpg`, `02-hand-calculation.png`. Discovered images sort alphabetically; existing curated images stay first.
+- **Captions:** `02-hand-calculation.jpg` becomes “Hand calculation”. To customize, add `mediaOverrides: { '02-hand-calculation.jpg': { caption: 'Member sizing', alt: 'Hand calculation for member sizing', mediaFit: 'contain' } }` to that chapter in project/experience data.
+- **Fit:** technical images default to `contain`, preserving CAD and equations. Set chapter `mediaFit: 'cover'` for photos, or override individual images. Lightboxes always show the full image.
+- **Hero:** copy or replace `src/assets/home/hero-welding.jpg`. It appears automatically. No empty frame is shown when absent; inspect the desktop crop after replacing it. Mobile shows the full photo.
+- **Refresh:** save/rebuild with `npm.cmd run build`. Vite normally detects added files; if a new file does not appear, restart `npm.cmd run dev`.
 
-Use these project folders:
+The shared `src/data/media.ts` loader merges new files into the existing slideshow. Current `public/images/` assets stay in place. Matching filenames (ignoring numeric prefixes) are skipped; avoid adding renamed copies of an existing image.
 
 ```text
-public/images/baja/
-public/images/react/
-public/images/engine-rebuild/
-public/images/velocity-stack/
-public/images/gokart/
+src/assets/
+  home/                         # add hero-welding.jpg here
+  project-media/
+    baja/
+      01-design/
+      02-cad-analysis/
+      03-integration/
+      04-fabrication/
+    react/
+      01-experimental-hardware/
+      02-magnetic-packaging/
+      03-damping/
+    velocity-stack/
+      01-concept/
+      02-cad/
+      03-testing/
+    engine-model/
+      01-mechanisms/
+      02-assembly/
+      03-completed/
+    go-kart/
+      01-concept/
+      02-design/
+      03-build-test/
+  experience-media/
+    agentic-innovations/
+      01-workflow/
+      02-development/
+      03-validation/
+    encotech/
 ```
-
-Empty galleries stay hidden until at least one real image is added. Use paths relative to `public/` and do not start them with a slash:
-
-```ts
-{ src: 'images/baja/chassis-cad.jpg', alt: 'SolidWorks model of the Baja chassis', caption: 'Final chassis CAD' }
-```
-
-No React component changes are required.
 
 ## Previewing the Website Locally
 
@@ -87,8 +107,8 @@ npm run build
 
 ## Adding or editing a project
 
-The reusable project-page renderer is driven by `src/data/projects.ts`. Copy an existing project object, edit its fields and `sections`, then add any image files to the appropriate `public/images/` folder.
+The reusable project-page renderer is driven by `src/data/projects.ts`. Copy an existing project object, edit its fields and `sections`, then set each chapter's `mediaFolder` and add files under `src/assets/project-media/`.
 
 ## GitHub Pages
 
-The deployment workflow is in `.github/workflows/deploy.yml`. Push the repository to GitHub, then enable **GitHub Actions** as the Pages source in the repository’s Pages settings. The Vite `base` setting in `vite.config.ts` is intentionally relative, so there is no repository name to update.
+The deployment workflow is in `.github/workflows/deploy.yml`. The existing Vite `base` in `vite.config.ts` is `/Alfred-Nonis-Portfolio/`; keep it aligned with the hosting path. Local editing and validation do not require deployment.

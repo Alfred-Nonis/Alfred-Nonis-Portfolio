@@ -22,8 +22,8 @@ export function ProjectDetail() {
       </div>
       {project.heroImage && <div className="project-hero-image"><ImageTile image={project.heroImage} priority /></div>}
     </header>
-    <div className="project-summary"><span>01</span><p>{project.summary}</p></div>
-    <div className="case-study">{project.sections.map((section, index) => <ProjectSectionRenderer section={section} key={`${section.title}-${index}`} />)}</div>
+    <div className="project-summary"><p>{project.summary}</p></div>
+    <div className="case-study">{project.sections.map((section, index) => <ProjectSectionRenderer section={section} key={`${project.slug}-${section.title}-${index}`} />)}</div>
     <div className="project-end"><p className="eyebrow">Explore more work</p><Link className="button" to="/projects">All projects</Link></div>
   </main>
 }
