@@ -73,3 +73,118 @@
   :is(.project-detail, .experience-detail) .project-section { padding-block: 18px 16px; }
   .calculation-card { grid-template-columns: minmax(0, 1fr); padding: 12px; gap: 6px; }
 }
+
+/* Recruiter readability: one main narrative surface per chapter. */
+:is(.project-detail, .experience-detail) .chapter-narrative {
+  width: min(940px, 100%);
+  padding: 28px 32px;
+  border: 1px solid #c0d1df;
+  border-radius: 8px;
+  background: #fcfdfd;
+  box-shadow: 0 3px 12px #27323a08;
+}
+:is(.project-detail, .experience-detail) .chapter-copy p,
+:is(.project-detail, .experience-detail) .section-text > p,
+:is(.project-detail, .experience-detail) .project-summary p,
+.contribution-block p {
+  color: #303c46;
+  font-size: 1.075rem;
+  line-height: 1.75;
+}
+:is(.project-detail, .experience-detail) .project-section { padding-block: 32px; }
+:is(.project-detail, .experience-detail) .engineering-story-feature {
+  width: min(940px, 100%);
+  margin-top: 36px;
+  padding: 28px 32px;
+  border: 1px solid #aac6db;
+  border-left: 4px solid var(--accent-strong);
+  border-radius: 8px;
+  background: #f0f6fb;
+}
+:is(.project-detail, .experience-detail) .engineering-story-feature h3 { font-size: clamp(1.45rem, 2.3vw, 1.8rem); }
+:is(.project-detail, .experience-detail) .engineering-story-feature > .eyebrow {
+  color: var(--accent-ink);
+  font-size: .75rem;
+  font-weight: 750;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+:is(.project-detail, .experience-detail) .project-hero h1,
+.experience-detail .experience-hero h1 { font-size: clamp(2rem, 3vw, 2.8rem); }
+.experience-detail .experience-hero,
+.experience-detail .experience-hero h1 { text-align: left; }
+.experience-detail .tags { justify-content: flex-start; }
+.experience-detail { max-width: none; padding-inline: 0; }
+.experience-detail > :is(.breadcrumbs, .experience-hero, .experience-end) { width: min(1100px, calc(100% - 48px)); margin-inline: auto; }
+
+/* Shared detail layout leaves the existing wide evidence and narrative intact. */
+.detail-layout { --section-offset: 144px; width: min(1100px, calc(100% - 48px)); margin: 0 auto 32px; }
+.detail-content { min-width: 0; }
+.detail-content .case-study { width: 100%; max-width: none !important; }
+.detail-overview, .detail-content .project-section { scroll-margin-top: var(--section-offset); }
+.detail-content .project-summary { width: min(940px, 100%); max-width: none; margin: 24px auto 28px; text-align: left; }
+.detail-content .project-summary p { text-align: left; }
+.contribution-block { max-width: 940px; margin: 28px auto; padding: 26px 32px; background: #fcfdfd; border: 1px solid #b6ccdd; border-top: 3px solid var(--accent-strong); border-radius: 8px; }
+.contribution-block h2 { font-size: 1.45rem; margin-bottom: 14px; color: var(--accent-ink); }
+.contribution-block h3 { font-size: 1.15rem; line-height: 1.4; margin-bottom: 10px; }
+.contribution-block p { margin-bottom: 0; }
+.key-metrics { max-width: 1000px; margin: 30px auto 16px; }
+.key-metrics h2 { font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-ink); margin-bottom: 14px; }
+.key-metrics .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); max-width: none; gap: 12px; margin: 0; }
+.key-metrics .metrics > div { padding: 18px 14px; background: #f2f7fb; border: 1px solid var(--border); border-radius: 6px; text-align: left; }
+.key-metrics .metrics strong { display: block; font-size: clamp(1.45rem, 2vw, 1.9rem); line-height: 1.25; overflow-wrap: anywhere; margin-bottom: 7px; }
+.key-metrics .metrics span { font-size: .88rem; line-height: 1.5; }
+
+.section-navigator { position: sticky; top: var(--header-height, 66px); z-index: 20; display: flex; gap: 4px; max-width: 100%; min-width: 0; padding: 6px; overflow-x: auto; overscroll-behavior-x: contain; background: #f8fafb; border: 1px solid var(--border-strong); border-radius: 6px; scrollbar-width: thin; }
+.section-nav-label { display: none; }
+.section-navigator a { display: flex; flex: 0 0 auto; align-items: center; min-height: 44px; padding: 9px 13px; color: #384e60; border: 1px solid transparent; border-radius: 4px; font-size: .85rem; line-height: 1.4; }
+.section-navigator a:hover { background: #e8f0f7; }
+.section-navigator a[aria-current="location"] { background: #dfedf8; color: #1e557d; border-color: #9bbcd4; font-weight: 700; }
+.section-navigator a:focus-visible { outline-offset: -2px; }
+
+/* The media viewport sets control position; captions flow below the controls. */
+.project-slideshow { width: min(1000px, 100%); margin-inline: auto; }
+.slideshow-viewport { height: clamp(280px, 42vw, 520px); background: var(--media-well); }
+.slideshow-viewport .media-button { height: 100%; width: 100%; }
+.slideshow-viewport img { min-height: 0; width: 100%; height: 100%; }
+.slideshow-controls { padding: 10px 14px; border-top: 1px solid var(--border); }
+.slideshow-controls button { flex: 0 0 44px; width: 44px; height: 44px; }
+.slideshow-slide figcaption { padding: 14px 18px; }
+
+/* Supporting text becomes easier to scan without enlarging the hero or navbar. */
+.hero-bio, .home-approach > p, .home-contact-cta p, .page-intro > p:last-child { font-size: 1.05rem; line-height: 1.75; color: #3d4d5a; }
+.project-subtitle { font-size: 1.05rem; line-height: 1.75; color: #3d4d5a; }
+.project-card p, .experience-card .experience-description { font-size: 1rem; line-height: 1.65; color: #3d4d5a; }
+.project-card .role, .experience-card .experience-role { font-size: .95rem; }
+.project-card .eyebrow { font-size: .72rem; }
+.project-card h3 { font-size: 1.2rem; }
+.project-card .tags li, .project-hero .tags li, .experience-card .tags li, .experience-hero .tags li { font-size: .78rem; padding: 5px 8px; }
+.project-card { cursor: pointer; min-width: 0; }
+.project-card-content { flex: 1; }
+.project-card:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 4px; border-color: var(--accent); box-shadow: 0 8px 20px #0d2f4f14; }
+.project-card:hover h3, .project-card:focus-visible h3 { color: var(--accent-ink); }
+.skill-groups h3 { font-size: 1rem; color: #374957; }
+.skill-chips li { font-size: .95rem; padding: 8px 14px; border-color: #8eacc2; color: #234e6e; background: #edf4f9; }
+.contact-list a { font-size: 1.05rem; }
+.contact-page > p:not(.eyebrow):not(.contact-note) { line-height: 1.75; color: #3d4d5a; }
+
+@media (min-width: 1280px) {
+  .detail-layout { width: min(1320px, calc(100% - 48px)); display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 24px; align-items: start; }
+  .section-navigator { top: calc(var(--header-height, 58px) + 20px); display: flex; flex-direction: column; overflow-x: hidden; padding: 8px; margin-top: 24px; }
+  .section-nav-label { display: block; padding: 8px 9px; color: var(--text-secondary); font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; }
+  .section-navigator a { flex: 0 0 auto; padding-inline: 9px; border-left-width: 3px; }
+}
+@media (max-width: 600px) {
+  .detail-layout { width: calc(100% - 40px); }
+  .experience-detail > :is(.breadcrumbs, .experience-hero, .experience-end) { width: calc(100% - 40px); }
+  :is(.project-detail, .experience-detail) .chapter-narrative,
+  :is(.project-detail, .experience-detail) .engineering-story-feature,
+  .contribution-block { padding: 20px; }
+  .section-navigator { padding: 4px; }
+  .section-navigator a { padding-inline: 11px; font-size: .8rem; }
+  .key-metrics .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .key-metrics .metrics > div { padding: 14px 11px; }
+  .key-metrics .metrics strong { font-size: 1.4rem; }
+  .slideshow-viewport { height: clamp(250px, 76vw, 390px); }
+  .slideshow-viewport .media-button { height: 100%; }
+}

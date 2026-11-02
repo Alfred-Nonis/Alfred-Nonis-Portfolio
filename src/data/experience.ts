@@ -1,4 +1,4 @@
-import type { ProjectImage, ProjectSection } from '../types/project'
+import type { Contribution, ProjectImage, ProjectSection } from '../types/project'
 
 export interface IndustryExperience {
   slug: string
@@ -8,6 +8,7 @@ export interface IndustryExperience {
   period: string
   summary: string
   overview?: string[]
+  contribution?: Contribution
   tags: string[]
   sections?: ProjectSection[]
   heroImage?: ProjectImage
@@ -20,6 +21,9 @@ export const experiences: IndustryExperience[] = [
     slug: "agentic-innovations",
     organization: "Agentic Innovations",
     role: "AI Engineering Intern",
+    contribution: {
+      body: "Worked on CASE's architecture and workflow using Codex, along with supplier-validation test cases and the engineering logic used to process BOM requirements. I also worked on the patent-analysis workflow and helped prepare the system for engineering review."
+    },
     period: "May 2026 – August 2026",
     summary: "Co-developed agentic AI applications for patent analysis and engineering BOM sourcing, with supplier validation and evidence-backed reporting.",
     tags: [

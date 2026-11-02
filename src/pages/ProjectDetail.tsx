@@ -5,6 +5,9 @@ import { Tags } from '../components/ProjectCard'
 import { ProjectSectionRenderer } from '../components/ProjectSectionRenderer'
 import { ProjectSlideshow } from '../components/ProjectSlideshow'
 import { chapterImages, projectHeroImage } from '../data/media'
+import { ContributionBlock } from '../components/ContributionBlock'
+import { ProjectMetrics } from '../components/ProjectMetrics'
+import { DetailSections } from '../components/SectionNavigator'
 
 export function ProjectDetail() {
   const { slug } = useParams()
@@ -23,14 +26,20 @@ export function ProjectDetail() {
         <h1>{project.title}</h1>
         <p className="project-subtitle">{project.subtitle}</p>
         {project.status && <p className="eyebrow">{project.status}</p>}
-        {(project.role || project.organization) && <dl>{project.role && <div><dt>My role</dt><dd>{project.role}</dd></div>}{project.organization && <div><dt>Organization</dt><dd>{project.organization}</dd></div>}</dl>}
+        {((project.role && !project.contribution) || project.organization) && <dl>{project.role && !project.contribution && <div><dt>My role</dt><dd>{project.role}</dd></div>}{project.organization && <div><dt>Organization</dt><dd>{project.organization}</dd></div>}</dl>}
         <Tags tags={project.tags} />
       </div>
       {heroImage && <div className={`project-hero-image${project.heroMediaFolder ? ' project-hero-image-wide' : ''}`}><ImageTile image={heroImage} priority /></div>}
     </header>
     {!!galleryImages.length && <ProjectSlideshow images={galleryImages} label={`${project.title} gallery`} mediaFit={project.gallery?.mediaFit} />}
-    <div className="project-summary">{(project.overview ?? [project.summary]).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>
-    <div className="case-study">{project.sections.map((section, index) => <ProjectSectionRenderer section={section} key={`${project.slug}-${section.title}-${index}`} />)}</div>
+    {project.sections.length > 0 && <DetailSections sections={project.sections}>
+      <div id="overview" tabIndex={-1} className="detail-overview">
+        <div className="project-summary">{(project.overview ?? [project.summary]).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>
+        {project.contribution && <ContributionBlock contribution={project.contribution} />}
+        {!!project.keyMetrics?.length && <section className="key-metrics" aria-labelledby="key-metrics-heading"><h2 id="key-metrics-heading">Key Metrics</h2><ProjectMetrics items={project.keyMetrics} /></section>}
+      </div>
+      <div className="case-study">{project.sections.map((section, index) => <ProjectSectionRenderer section={section} key={`${project.slug}-${section.title}-${index}`} />)}</div>
+    </DetailSections>}
     <div className="project-end"><p className="eyebrow">Explore more work</p><Link className="button" to="/projects">All projects</Link></div>
   </main>
 }

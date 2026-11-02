@@ -4,6 +4,8 @@ import { ExperienceCard } from '../components/ExperienceCard'
 import { ImageTile } from '../components/Media'
 import { Tags } from '../components/ProjectCard'
 import { ProjectSectionRenderer } from '../components/ProjectSectionRenderer'
+import { ContributionBlock } from '../components/ContributionBlock'
+import { DetailSections } from '../components/SectionNavigator'
 
 export function Experience() {
   return <main className="inner-page experience-page">
@@ -24,11 +26,17 @@ export function ExperienceDetail() {
     <header className={`experience-hero${experience.heroImage ? ' experience-hero-with-media' : ''}`}>
       <div><p className="eyebrow">Industry Experience</p><h1>{experience.organization}</h1>
         <p className="experience-role">{experience.role}</p><p className="experience-period">{experience.period}</p>
-        <div className="experience-description">{(experience.overview ?? [experience.summary]).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div><Tags tags={experience.tags} />
+        <Tags tags={experience.tags} />
       </div>
       {experience.heroImage && <div className="experience-hero-image"><ImageTile image={experience.heroImage} priority /></div>}
     </header>
-    {experience.sections.map((section, index) => <ProjectSectionRenderer section={section} key={`${experience.slug}-${index}`} />)}
+    <DetailSections sections={experience.sections}>
+      <div id="overview" tabIndex={-1} className="detail-overview">
+        <div className="project-summary">{(experience.overview ?? [experience.summary]).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>
+        {experience.contribution && <ContributionBlock contribution={experience.contribution} />}
+      </div>
+      {experience.sections.map((section, index) => <ProjectSectionRenderer section={section} key={`${experience.slug}-${index}`} />)}
+    </DetailSections>
     <div className="experience-end"><Link className="text-link" to="/experience">View all industry experience <span aria-hidden="true">→</span></Link></div>
   </main>
 }

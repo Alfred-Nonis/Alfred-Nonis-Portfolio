@@ -4,9 +4,10 @@ import { ProjectChapter } from './ProjectChapter'
 import { ProjectMetrics } from './ProjectMetrics'
 import { ProjectSlideshow } from './ProjectSlideshow'
 import { ScrollChapter } from './ScrollChapter'
+import { chapterId } from './SectionNavigator'
 
 export function ProjectSectionRenderer({ section }: { section: ProjectSection }) {
-  if (section.type === 'chapter') return <ProjectChapter chapter={section} />
+  if (section.type === 'chapter') return <ProjectChapter chapter={section} id={chapterId(section.title)} />
   if (section.type === 'image-grid' && (!Array.isArray(section.images) || section.images.length === 0)) return null
   let content: ReactNode
   switch (section.type) {

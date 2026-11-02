@@ -33,6 +33,7 @@ export function ProjectSlideshow({ images, label, mediaFit = 'contain' }: { imag
         move(event.key === 'ArrowRight' ? 1 : -1)
       }
     }}>
+    <figure id={slideId} className="slideshow-slide" role="group" aria-roledescription="slide" aria-label={`${currentIndex + 1} of ${images.length}`}>
     <div className="slideshow-viewport"
       onPointerDown={event => {
         suppressClick.current = false
@@ -47,16 +48,15 @@ export function ProjectSlideshow({ images, label, mediaFit = 'contain' }: { imag
       onClickCapture={event => {
         if (suppressClick.current && event.detail > 0) { event.preventDefault(); event.stopPropagation(); suppressClick.current = false }
       }}>
-      <figure id={slideId} className="slideshow-slide" role="group" aria-roledescription="slide" aria-label={`${currentIndex + 1} of ${images.length}`}>
-        <ImageTile image={image} fit={image.mediaFit ?? mediaFit} priority={currentIndex === 0} onOpen={() => setLightbox(true)} />
-        <figcaption><span className="slide-caption">{image.caption || image.alt}</span>{image.description && <span className="slide-description">{image.description}</span>}</figcaption>
-      </figure>
+      <ImageTile image={image} fit={image.mediaFit ?? mediaFit} priority={currentIndex === 0} onOpen={() => setLightbox(true)} />
     </div>
     {images.length > 1 && <div className="slideshow-controls">
       <button type="button" aria-label="Previous image" aria-controls={slideId} onClick={() => move(-1)}>←</button>
       <span aria-live="polite" aria-atomic="true">{currentIndex + 1} / {images.length}<span className="sr-only">: {image.caption || image.alt}</span></span>
       <button type="button" aria-label="Next image" aria-controls={slideId} onClick={() => move(1)}>→</button>
     </div>}
+    <figcaption><span className="slide-caption">{image.caption || image.alt}</span>{image.description && <span className="slide-description">{image.description}</span>}</figcaption>
+    </figure>
     {lightbox && <ImageLightbox image={image} close={() => setLightbox(false)} />}
   </div>
 }

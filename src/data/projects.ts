@@ -15,6 +15,16 @@ export const projects: Project[] = [
     shortTitle: "Baja SAE Chassis",
     organization: "Longhorn Baja SAE",
     role: "Chassis Co-Lead & Founding Member",
+    contribution: {
+      title: "Chassis Co-Lead & Founding Member",
+      body: "Parametric roll-cage design and chassis FEA, along with design-for-manufacturing work around our tubing and tooling. I also worked on jigging, TIG tack welding, chassis fabrication and integration with the other vehicle subsystems."
+    },
+    keyMetrics: [
+      { value: "12", label: "Major chassis iterations" },
+      { value: "~96 → ~65 lb", label: "Roll-cage mass" },
+      { value: "~31%", label: "Mass reduction" },
+      { value: "10,000 lbf", label: "Major frontal / rear analysis load" }
+    ],
     category: "Vehicle Design",
     subtitle: "Parametric roll-cage design, structural analysis and fabrication for an off-road vehicle.",
     summary: "Reduced roll-cage mass by approximately 31%, from about 96 lb to 65 lb, through structural analysis and design revisions.",
@@ -167,6 +177,7 @@ export const projects: Project[] = [
         engineeringStories: [
           {
             title: "Designing Around the Tube Notcher",
+            featureEyebrow: "Manufacturing changed the CAD",
             body: [
               "The tube notcher became one of those constraints that sounds small until you actually start making the car.",
               "Ours could only rotate to roughly 40°, and it worked best when the notch stayed in one plane. A lot of joints that were easy to model became much harder once the cut started wrapping around multiple axes.",
@@ -277,6 +288,15 @@ export const projects: Project[] = [
     shortTitle: "REACT - Texas Spacecraft Laboratory",
     organization: "Texas Spacecraft Laboratory",
     role: "Internal Hardware Lead",
+    contribution: {
+      title: "Internal Hardware Lead",
+      body: "I lead the mechanical side of the internal test hardware, including sensor and test-board supports, magnetometer hardware, snap-fit fastening concepts and the viscous damping-leg development. I also work with the physics and electronics teams when the mechanical setup needs to change around the experiment."
+    },
+    keyMetrics: [
+      { value: "4", label: "Damping-leg design iterations" },
+      { value: "Internal Hardware Lead", label: "Role" },
+      { value: "Non-ferromagnetic constraints", label: "Mechanical design requirement" }
+    ],
     category: "Aerospace",
     subtitle: "Mechanical hardware for CubeSat magnetic-interference research.",
     summary: "Lead a three-person hardware team developing CubeSat sensor mounts, fasteners and prototype test hardware for REACT research.",
@@ -467,10 +487,19 @@ export const projects: Project[] = [
     slug: "velocity-stack",
     title: "Engine Intake Velocity Stack",
     shortTitle: "Engine Intake Velocity Stack",
-    role: "Independent Designer & Fabricator",
+    role: "Intake Design & Prototyping",
+    contribution: {
+      body: "Worked through the initial intake theory and hand calculations, then carried the design into CAD and the two printed prototypes. I also worked through the intake-fit issue and helped validate the final design during engine testing using Hall-effect RPM measurement."
+    },
+    keyMetrics: [
+      { value: "5%", label: "Original target" },
+      { value: "7.2%", label: "Average torque increase" },
+      { value: "~2,000 RPM", label: "Tested range" },
+      { value: "2", label: "Printed prototypes" }
+    ],
     category: "Engines",
     subtitle: "Helmholtz-tuned, 3D-printed intake for a Predator 79 cc engine.",
-    summary: "Independently designed and 3D-printed an intake velocity stack that achieved a 7.2% average torque increase during testing.",
+    summary: "Designed and 3D-printed an intake velocity stack as part of a team project that achieved a 7.2% average torque increase during testing.",
     tags: [
       "CAD",
       "Intake Tuning",
