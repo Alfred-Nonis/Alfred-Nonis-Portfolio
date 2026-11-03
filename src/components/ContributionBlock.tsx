@@ -2,8 +2,8 @@ import type { Contribution } from '../types/project'
 
 export function ContributionBlock({ contribution }: { contribution: Contribution }) {
   return <section className="contribution-block" aria-labelledby="contribution-heading">
-    <h2 id="contribution-heading">My Contribution</h2>
-    {contribution.title && <h3>{contribution.title}</h3>}
-    <p>{contribution.body}</p>
+    <h2 id="contribution-heading">{contribution.title ?? 'My Contribution'}</h2>
+    {contribution.role && <p className="contribution-role">{contribution.role}</p>}
+    <ul className="contribution-items">{contribution.items.map(item => <li key={item}>{item}</li>)}</ul>
   </section>
 }

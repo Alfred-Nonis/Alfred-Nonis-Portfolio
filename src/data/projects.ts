@@ -16,8 +16,13 @@ export const projects: Project[] = [
     organization: "Longhorn Baja SAE",
     role: "Chassis Co-Lead & Founding Member",
     contribution: {
-      title: "Chassis Co-Lead & Founding Member",
-      body: "Parametric roll-cage design and chassis FEA, along with design-for-manufacturing work around our tubing and tooling. I also worked on jigging, TIG tack welding, chassis fabrication and integration with the other vehicle subsystems."
+      role: "Chassis Co-Lead & Founding Member",
+      items: [
+        "Built and maintained the parametric SolidWorks roll-cage model through the chassis design iterations.",
+        "Ran chassis FEA for frontal/rear loading, suspension-mount loads and engine-support cases to guide tube removal and downsizing.",
+        "Worked through chassis DFM around the ~40° manual tube-notcher limit, tube sizing, outsourced VR3 bends and portable jigging.",
+        "Worked on tube fit-up and chassis fabrication using the notcher, angle grinder and TIG tack welding, then coordinated final chassis integration with powertrain, suspension and ergonomics."
+      ]
     },
     keyMetrics: [
       { value: "12", label: "Major chassis iterations" },
@@ -59,6 +64,20 @@ export const projects: Project[] = [
         engineeringStories: [
           {
             title: "Tube Selection",
+            featureEyebrow: "Weight vs. bending strength",
+            featurePriority: "secondary",
+            featureResult: "~30% less material for approximately the same bending strength",
+            mediaFolder: "project-media/baja/01-design/tube-selection",
+            mediaFit: "contain",
+            replaceCalculationsWhenMediaPresent: true,
+            mediaOverrides: {
+              "01-tube-selection-hand-calculations": {
+                caption: "Tube Selection Hand Calculations",
+                description: "Hand calculation comparing tube section modulus and material usage for the chassis tubing selection.",
+                alt: "Hand calculation comparing tube section modulus and material usage for the chassis tubing selection.",
+                mediaFit: "contain"
+              }
+            },
             body: [
               "Weight was a major consideration from the beginning. One of the things we looked at was how to get the bending strength we needed without putting more steel into the frame than we had to.",
               "For bending, moving material farther away from the neutral axis is more efficient than just making the wall thicker. The rules required at least a 0.062 in wall, so using that minimum wall with a 1.25 in OD tube made a lot of sense.",
@@ -289,8 +308,13 @@ export const projects: Project[] = [
     organization: "Texas Spacecraft Laboratory",
     role: "Internal Hardware Lead",
     contribution: {
-      title: "Internal Hardware Lead",
-      body: "I lead the mechanical side of the internal test hardware, including sensor and test-board supports, magnetometer hardware, snap-fit fastening concepts and the viscous damping-leg development. I also work with the physics and electronics teams when the mechanical setup needs to change around the experiment."
+      role: "Internal Hardware Lead",
+      items: [
+        "Lead the mechanical development of internal experimental hardware including sensor supports, test-board hardware and magnetometer-related mechanical components.",
+        "Developed non-ferromagnetic / 3D-printed fastening concepts to reduce unnecessary steel hardware near magnetically sensitive parts of the experiment.",
+        "Developed the viscous damping-leg concept through four mechanical iterations, including the fluid-holder geometry, mounting method and revised tapered snap-fit pins.",
+        "Coordinate mechanical packaging changes with the physics and electronics teams as the experimental setup evolves."
+      ]
     },
     keyMetrics: [
       { value: "4", label: "Damping-leg design iterations" },
@@ -489,7 +513,12 @@ export const projects: Project[] = [
     shortTitle: "Engine Intake Velocity Stack",
     role: "Intake Design & Prototyping",
     contribution: {
-      body: "Worked through the initial intake theory and hand calculations, then carried the design into CAD and the two printed prototypes. I also worked through the intake-fit issue and helped validate the final design during engine testing using Hall-effect RPM measurement."
+      items: [
+        "Worked through the intake theory and initial hand calculations used to size the velocity-stack concept before CAD.",
+        "Designed the intake geometry in CAD and iterated through two 3D-printed prototypes after identifying fit and tolerance problems on the first version.",
+        "Worked through the intake-interface issue and used the second prototype to evaluate the effect of tighter tolerances and thermal expansion during engine testing.",
+        "Used Hall-effect RPM measurement during testing that showed a 7.2% average torque increase across the measured range up to roughly 2,000 RPM."
+      ]
     },
     keyMetrics: [
       { value: "5%", label: "Original target" },

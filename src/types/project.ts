@@ -1,7 +1,7 @@
 export type MediaFit = 'contain' | 'cover'
 export type ProjectImage = { src: string; alt: string; caption?: string; description?: string; mediaFit?: MediaFit }
 export type ProjectMetric = { value: string; label: string; note?: string }
-export type Contribution = { title?: string; body: string }
+export type Contribution = { title?: string; role?: string; items: string[] }
 export type ProjectMedia = {
   images?: ProjectImage[]
   mediaFit?: MediaFit
@@ -12,8 +12,12 @@ export type ProjectMedia = {
 export type EngineeringStory = ProjectMedia & {
   title: string
   featureEyebrow?: string
+  featurePriority?: 'secondary'
+  featureResult?: string
   body?: string[]
   calculations?: string[]
+  // Keep typed math until this story has discovered or explicit image media.
+  replaceCalculationsWhenMediaPresent?: boolean
 }
 export type ProjectChapter = {
   type: 'chapter'

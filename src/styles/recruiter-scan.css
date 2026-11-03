@@ -1,0 +1,93 @@
+/* A clear scan at the top, with the full engineering story below. */
+:root {
+  --font-body: "Source Sans 3", "Segoe UI", sans-serif;
+  --font-heading: "Manrope", "Segoe UI", sans-serif;
+  --text-primary: #263540;
+  --text-secondary: #475763;
+  font-family: var(--font-body);
+}
+body { font-family: var(--font-body); font-weight: 450; }
+h1, h2, h3, nav, .brand, .eyebrow, .metrics, .project-position dt { font-family: var(--font-heading); }
+h1, h2, h3 { font-weight: 750; }
+.hero-line, .hero-aside > p, .focus-list dt, .project-card-cover span,
+.technical-drawing span, .image-placeholder span, .image-placeholder small,
+.capabilities li span, .project-summary span, .process-list li > span,
+.slideshow-controls > span { font-family: var(--font-heading); }
+.hero-bio, .home-approach > p, .home-contact-cta p, .project-subtitle,
+.project-card p:not(.eyebrow), .experience-card .experience-description,
+.contact-page > p:not(.eyebrow):not(.contact-note),
+:is(.project-detail, .experience-detail) .chapter-copy p,
+:is(.project-detail, .experience-detail) .project-summary p {
+  color: #263540;
+  font-weight: 450;
+}
+.brand { display: flex; align-items: center; min-height: 44px; gap: 0; font-size: 1.075rem; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+.nav-link { line-height: 1.4; font-weight: 500; }
+
+/* Position stays under the title; the opening image follows the scan summary. */
+:is(.project-detail, .experience-detail) .project-hero h1,
+.experience-detail .experience-hero h1 { font-size: clamp(2rem, 3vw, 2.75rem); }
+.project-detail > .project-hero-scan { width: min(1000px, calc(100% - 48px)); padding-block: 12px 20px; }
+.project-detail .project-hero-scan > div:first-child { max-width: none; }
+.project-detail:has(.project-hero-scan) > .breadcrumbs { padding-top: 12px; margin-bottom: 8px; }
+.project-hero-scan h1 { max-width: none; margin-bottom: 12px; }
+.project-hero .project-position { margin: 12px 0; }
+.project-position dt { font-size: .72rem; letter-spacing: .12em; margin-bottom: 4px; }
+.project-position dd { font-size: 1.1rem; font-weight: 650; line-height: 1.45; }
+.project-hero .tags, .experience-hero .tags { gap: 8px; }
+.project-hero .tags li, .experience-hero .tags li { font-size: .9rem; font-weight: 600; padding: 8px 12px; color: #234d6b; border-color: #8daec6; background: #edf5fb; }
+.project-card .tags li, .experience-card .tags li { font-size: .82rem; font-weight: 550; padding: 6px 9px; color: #284c66; border-color: #9bb5c9; background: #edf4f9; }
+.skill-chips li { color: #203f57; border-color: #799bb6; font-weight: 600; }
+
+.contribution-block { max-width: 1000px; margin: 16px auto 22px; padding: 20px 28px; background: #fcfdfd; }
+.contribution-block h2 { font-size: clamp(1.6rem, 2.5vw, 2.1rem); margin-bottom: 12px; }
+.contribution-block .contribution-role { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; line-height: 1.45; margin-bottom: 12px; color: #263540; }
+.contribution-items { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px 32px; padding-left: 22px; margin: 0; }
+.contribution-items li { padding-left: 3px; color: #263540; font-size: 1.025rem; font-weight: 500; line-height: 1.6; }
+.contribution-items li::marker { color: var(--accent-strong); }
+.key-metrics { margin-block: 22px 24px; }
+.key-metrics h2 { font-size: 1.2rem; font-weight: 750; letter-spacing: .06em; margin-bottom: 14px; }
+.key-metrics .metrics > div { padding-block: 15px; }
+.key-metrics .metrics span { font-family: var(--font-body); font-weight: 500; font-size: .95rem; }
+.project-context { max-width: 1000px; margin: 28px auto; }
+.project-context-with-media { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center; gap: 24px; }
+.detail-content .project-summary { padding: 22px 24px; background: #fcfdfd; border-radius: 0 6px 6px 0; }
+.project-context .project-summary { width: 100%; margin: 0; }
+.project-context-media { min-width: 0; border-radius: 6px; overflow: hidden; }
+.project-context-media .media { height: 260px; background: var(--media-well); }
+
+/* One continuous chapter surface also holds the narrative after its media. */
+:is(.project-detail, .experience-detail) .chapter-narrative { width: min(1000px, 100%); margin-inline: auto; padding: 0; overflow: hidden; }
+:is(.project-detail, .experience-detail) .chapter-narrative > .chapter-copy { width: min(940px, 100%); padding: 28px 24px; }
+:is(.project-detail, .experience-detail) .chapter-narrative > .chapter-copy-after-media { margin-top: 0; }
+:is(.project-detail, .experience-detail) .chapter-narrative > .project-slideshow { width: 100%; max-width: none; margin: 0; border-inline: 0; border-radius: 0; }
+:is(.project-detail, .experience-detail) .engineering-story:not(.engineering-story-feature) > .chapter-copy { padding: 26px 28px; border: 1px solid var(--border); border-radius: 8px; background: #fcfdfd; }
+:is(.project-detail, .experience-detail) .engineering-story-secondary { background: #f7fafc; border-left-width: 3px; border-color: #b5cadb; border-left-color: #5785a7; }
+:is(.project-detail, .experience-detail) .engineering-story-secondary h3 { font-size: clamp(1.35rem, 2vw, 1.65rem); }
+:is(.project-detail, .experience-detail) .engineering-result { width: fit-content; max-width: 100%; margin: 0 auto 22px; padding: 12px 18px; border-radius: 4px; background: #e4eff7; color: #234f70; font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; line-height: 1.5; }
+
+.site-footer { font-size: .95rem; padding-block: 30px; }
+.footer-identity p { font-size: .95rem; }
+.footer-identity strong { font-family: var(--font-heading); font-size: 1.075rem; font-weight: 700; }
+.footer-links { font-size: .95rem; font-weight: 500; gap: 18px; }
+.footer-links a { min-height: 44px; }
+.site-footer > .footer-copyright { display: block; font-size: .9rem; margin-left: 0; }
+
+@media (min-width: 900px) {
+  .contribution-items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 1023px) {
+  .site-footer { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .site-footer > .footer-links { flex-direction: column; align-items: flex-start; gap: 0; }
+}
+@media (max-width: 820px) {
+  .project-context-with-media { grid-template-columns: minmax(0, 1fr); }
+  .project-context-media .media { height: 240px; }
+}
+@media (max-width: 600px) {
+  .project-detail > .project-hero-scan { width: calc(100% - 40px); }
+  .contribution-block { padding: 20px; }
+  .contribution-items { gap: 14px; }
+  :is(.project-detail, .experience-detail) .chapter-narrative > .chapter-copy { padding: 22px 20px; }
+  :is(.project-detail, .experience-detail) .engineering-story:not(.engineering-story-feature) > .chapter-copy { padding: 22px 20px; }
+}

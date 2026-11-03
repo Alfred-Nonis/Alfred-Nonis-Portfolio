@@ -56,7 +56,7 @@ export function Navbar() {
     if (!event.currentTarget.contains(event.relatedTarget)) close()
   }}>
     <div className="nav-shell">
-      <Link to="/" className="brand" onClick={close}><span>{profile.name}</span></Link>
+      <Link to="/" className="brand" onClick={close}>{profile.name}</Link>
       <button ref={toggle} type="button" className="menu-toggle" aria-expanded={open} aria-controls="primary-nav" onClick={() => { setOpen(!open); setExpanded(null) }}><span className="sr-only">Toggle navigation</span><i></i><i></i><i></i></button>
       <nav id="primary-nav" className={open ? 'primary-nav open' : 'primary-nav'} aria-label="Primary navigation">
         <NavLink end to="/" className={navClass} onClick={close}>Home</NavLink>
@@ -70,5 +70,5 @@ export function Navbar() {
 }
 
 export function Footer() {
-  return <footer className="site-footer"><div className="footer-identity"><p><strong>{profile.name}</strong><span>{profile.title}</span></p></div><div className="footer-links"><a href={`mailto:${profile.email}`}>{profile.email}</a><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a></div><p className="footer-copyright">© {new Date().getFullYear()} · {profile.school}</p></footer>
+  return <footer className="site-footer"><div className="footer-identity"><p><strong>{profile.name}</strong><span>{profile.title}</span></p></div><div className="footer-links"><a href={`mailto:${profile.email}`}>{profile.email}</a><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a></div><p className="footer-copyright">© {new Date().getFullYear()} {profile.name}</p></footer>
 }

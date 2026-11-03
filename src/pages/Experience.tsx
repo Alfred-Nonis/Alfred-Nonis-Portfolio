@@ -32,8 +32,8 @@ export function ExperienceDetail() {
     </header>
     <DetailSections sections={experience.sections}>
       <div id="overview" tabIndex={-1} className="detail-overview">
-        <div className="project-summary">{(experience.overview ?? [experience.summary]).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>
         {experience.contribution && <ContributionBlock contribution={experience.contribution} />}
+        <div className="project-summary">{(experience.overview ?? [experience.summary]).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>
       </div>
       {experience.sections.map((section, index) => <ProjectSectionRenderer section={section} key={`${experience.slug}-${index}`} />)}
     </DetailSections>

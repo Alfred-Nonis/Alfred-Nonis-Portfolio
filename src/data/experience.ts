@@ -22,7 +22,12 @@ export const experiences: IndustryExperience[] = [
     organization: "Agentic Innovations",
     role: "AI Engineering Intern",
     contribution: {
-      body: "Worked on CASE's architecture and workflow using Codex, along with supplier-validation test cases and the engineering logic used to process BOM requirements. I also worked on the patent-analysis workflow and helped prepare the system for engineering review."
+      items: [
+        "Used Codex to help build CASE's system architecture and engineering-BOM processing workflow.",
+        "Developed supplier-validation test cases and criteria for checking manufacturing capability against BOM requirements.",
+        "Worked on evidence-backed supplier validation so engineering recommendations could be traced back to supporting information.",
+        "Worked on the patent-analysis workflow used to search, verify and compare technical patent information."
+      ]
     },
     period: "May 2026 – August 2026",
     summary: "Co-developed agentic AI applications for patent analysis and engineering BOM sourcing, with supplier validation and evidence-backed reporting.",
@@ -85,6 +90,12 @@ export const experiences: IndustryExperience[] = [
     organization: "Encotech Engineering Consultants, Inc.",
     shortName: "Encotech Engineering Consultants",
     role: "MEP Intern",
+    contribution: {
+      items: [
+        "Created electrical outlet layouts and interior floor-plan updates in Autodesk Revit.",
+        "Compared proposed layouts against existing engineering drawings and reviewed plumbing BOM information."
+      ]
+    },
     period: "June 2022 – August 2022",
     summary: "Early MEP internship supporting building layouts and engineering drawing review.",
     tags: [

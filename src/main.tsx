@@ -15,6 +15,7 @@ import './styles/light-redesign.css'
 import './styles/ux-foundation.css'
 import './styles/experience.css'
 import './styles/project-story.css'
+import './styles/recruiter-scan.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
