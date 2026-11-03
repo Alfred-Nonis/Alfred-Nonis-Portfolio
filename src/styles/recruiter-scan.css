@@ -41,40 +41,42 @@ h1, h2, h3 { font-weight: 750; }
 .footer-links a { min-height: 44px; }
 .site-footer > .footer-copyright { display: block; font-size: .9rem; margin-left: 0; }
 
-/* Desktop density comes from layout and spacing; body copy stays at 16–16.4px. */
+/* Compact desktop dimensions; normal body copy stays at 16px and 475 weight. */
 @media (min-width: 1024px) {
-  :root { --max-width: var(--site-shell-width); --section-gap: 56px; }
-  .nav-shell { max-width: var(--site-shell-width); min-height: 52px; padding-inline: 28px; }
+  :root { --max-width: var(--site-shell-width); --section-gap: 44px; }
+  body { font-weight: 475; }
+  .nav-shell { max-width: var(--site-shell-width); min-height: 48px; padding-inline: 28px; }
   .page-section, .inner-page:not(.experience-detail) { max-width: var(--site-shell-width); padding-inline: 28px; }
-  .page-section { padding-block: 46px; }
-  .inner-page:not(.experience-detail) { padding-block: 46px 58px; }
-  .section-heading { margin-bottom: 22px; }
-  .section-heading h2 { font-size: clamp(1.5rem, 2.2vw, 2rem); }
-  .page-intro { margin-bottom: 24px; }
-  .page-intro h1, .contact-page h1 { font-size: clamp(1.9rem, 3vw, 2.8rem); }
-  .hero { width: min(var(--site-shell-width), 100%); max-width: none; padding: 44px 28px; gap: 24px; }
-  .hero h1 { font-size: clamp(2.4rem, 3.2vw, 3.3rem); }
-  .hero-photo { max-width: 460px; max-height: 400px; }
+  .page-section { padding-block: 36px; }
+  .inner-page:not(.experience-detail) { padding-block: 36px 46px; }
+  .section-heading { margin-bottom: 18px; }
+  .section-heading h2 { font-size: clamp(1.3rem, 1.9vw, 1.7rem); }
+  .page-intro { margin-bottom: 20px; }
+  .page-intro h1, .contact-page h1 { font-size: clamp(1.65rem, 2.55vw, 2.35rem); }
+  .hero { width: min(var(--site-shell-width), 100%); max-width: none; padding: 35px 28px; gap: 20px; }
+  .hero h1 { font-size: clamp(2rem, 2.7vw, 2.8rem); }
+  .hero-photo { max-width: 400px; max-height: 340px; }
   .hero-bio, .home-approach > p, .home-contact-cta p, .page-intro > p:last-child,
-  .contact-page > p:not(.eyebrow):not(.contact-note) { font-size: 1.025rem; line-height: 1.65; }
-  .project-grid, .experience-grid { gap: 16px; }
-  .project-card-image, .project-card-image .media, .project-card-image .media-button { height: 176px; }
-  .project-card-cover { min-height: 176px; padding: 14px; }
-  .project-card-content { min-height: 0; padding: 14px; }
-  .project-card h3 { font-size: 1.08rem; }
-  .experience-card { padding: 18px; }
-  .experience-card h2, .experience-card h3 { font-size: clamp(1.05rem, 1.4vw, 1.2rem); }
-  .experience-card-compact { padding: 20px; }
-  .experience-card-image .media { height: 190px; }
-  .experience-period { margin-bottom: 12px; }
-  .home-skills { padding-block: 44px; }
+  .contact-page > p:not(.eyebrow):not(.contact-note),
+  .project-card p:not(.eyebrow), .experience-card .experience-description { font-size: 1rem; font-weight: 475; line-height: 1.6; }
+  .project-grid, .experience-grid { gap: 14px; }
+  .project-card-image, .project-card-image .media, .project-card-image .media-button { height: 150px; }
+  .project-card-cover { min-height: 150px; padding: 12px; }
+  .project-card-content { min-height: 0; padding: 12px; }
+  .project-card h3 { font-size: 1.05rem; }
+  .experience-card { padding: 16px; }
+  .experience-card h2, .experience-card h3 { font-size: clamp(1rem, 1.2vw, 1.05rem); }
+  .experience-card-compact { padding: 17px; }
+  .experience-card-image .media { height: 162px; }
+  .experience-period { margin-bottom: 10px; }
+  .home-skills { padding-block: 36px; }
   .home-approach, .home-contact-cta, .site-footer, .contact-page { padding-inline: max(28px, calc((100vw - var(--site-shell-width)) / 2 + 28px)); }
-  .home-approach { margin-top: 56px; padding-block: 44px; gap: 34px; }
-  .home-approach h2 { font-size: clamp(1.45rem, 2.2vw, 1.9rem); }
-  .home-contact-cta { padding-block: 42px; }
-  .home-contact-cta h2 { font-size: clamp(1.5rem, 2.2vw, 2rem); }
-  .contact-page { padding-block: 54px; }
-  .site-footer { padding-block: 26px; }
+  .home-approach { margin-top: 44px; padding-block: 35px; gap: 27px; }
+  .home-approach h2 { font-size: clamp(1.25rem, 1.9vw, 1.6rem); }
+  .home-contact-cta { padding-block: 34px; }
+  .home-contact-cta h2 { font-size: clamp(1.3rem, 1.9vw, 1.7rem); }
+  .contact-page { padding-block: 43px; }
+  .site-footer { padding-block: 22px; }
 }
 @media (max-width: 1023px) {
   .site-footer { grid-template-columns: minmax(0, 1fr); gap: 16px; }

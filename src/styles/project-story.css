@@ -1,22 +1,20 @@
 ﻿/* Shared detail geometry: every page uses one rail and one main content lane. */
 :root {
   --site-shell-width: 1360px;
-  --detail-shell-width: var(--site-shell-width);
-  --detail-nav-width: 160px;
-  --detail-nav-gap: 24px;
-  --detail-reading-width: 960px;
-  --detail-evidence-width: 1000px;
+  --detail-shell-width: 1320px;
+  --detail-nav-width: 150px;
+  --detail-nav-gap: 22px;
+  --detail-main-width: 1040px;
   --detail-gutter: 24px;
 }
 :is(.project-detail, .experience-detail) { max-width: none; padding: 0 0 50px; }
 .detail-grid { display: grid; grid-template-columns: minmax(0, 1fr); width: min(var(--detail-shell-width), calc(100% - 2 * var(--detail-gutter))); margin-inline: auto; }
-.detail-top-main, .detail-content, .detail-end-main { min-width: 0; }
-.detail-content { container-type: inline-size; }
+.detail-top-main, .detail-content, .detail-end-main { width: 100%; max-width: var(--detail-main-width); min-width: 0; justify-self: center; }
 .detail-layout { --section-offset: 144px; position: relative; align-items: start; }
 .detail-overview { display: flow-root; }
 .detail-overview, .detail-content .project-section { scroll-margin-top: var(--section-offset); }
 .detail-top-main > :is(.breadcrumbs, .project-hero, .experience-hero),
-.detail-end-main > :is(.project-end, .experience-end) { width: min(var(--detail-reading-width), 100%); max-width: none; margin-inline: auto; }
+.detail-end-main > :is(.project-end, .experience-end) { width: 100%; max-width: none; margin-inline: 0; }
 .detail-top-main .breadcrumbs { padding-top: 20px; margin-bottom: 10px; }
 
 /* Hero media is always part of the hero, independently of contributions. */
@@ -36,7 +34,7 @@
 .detail-top-main .experience-period { margin-bottom: 18px; }
 
 /* Narrative surfaces share their outer geometry, including engineering features. */
-.detail-content :is(.contribution-block, .project-summary, .chapter-narrative, .engineering-story) { width: min(var(--detail-reading-width), 100%); max-width: none; margin-inline: auto; border: 1px solid #c0d1df; border-radius: 8px; background: #fcfdfd; box-shadow: 0 3px 12px #27323a08; }
+.detail-content :is(.contribution-block, .project-summary, .chapter-narrative, .engineering-story) { width: 100%; max-width: none; margin-inline: 0; border: 1px solid #c0d1df; border-radius: 8px; background: #fcfdfd; box-shadow: 0 3px 12px #27323a08; }
 .detail-content .contribution-block { margin-block: 18px 22px; padding: 20px 28px; border-top: 3px solid var(--accent-strong); text-align: left; }
 .contribution-block h2 { font-size: clamp(1.6rem, 2.5vw, 2.1rem); margin-bottom: 12px; color: var(--accent-ink); }
 .contribution-block .contribution-role { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; line-height: 1.45; margin-bottom: 12px; color: #263540; }
@@ -56,10 +54,10 @@
 .detail-content .chapter-copy p, .detail-content .project-summary p { color: #263540; font-size: 1.075rem; font-weight: 450; line-height: 1.75; }
 .detail-content .chapter-copy p { max-width: none; margin: 0 0 18px; }
 .detail-content .chapter-copy > p:last-child { margin-bottom: 0; }
-.detail-content .chapter-narrative { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; padding: 0; overflow: visible; }
+.detail-content .chapter-narrative { display: grid; grid-template-columns: minmax(0, 1fr); padding: 0; overflow: hidden; }
 .detail-content .chapter-narrative > .chapter-copy { padding: 28px 24px; }
 .detail-content .chapter-copy-after-media { margin-top: 0; }
-.detail-content .engineering-story { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; margin-top: 28px; padding: 26px 28px; }
+.detail-content .engineering-story { display: grid; grid-template-columns: minmax(0, 1fr); margin-top: 28px; padding: 26px 28px; }
 .detail-content .engineering-story h3 { color: var(--accent-ink); font-size: clamp(1.2rem, 2vw, 1.45rem); margin-bottom: 18px; }
 .detail-content .engineering-story > .chapter-copy { padding: 0; }
 .detail-content .engineering-story-feature { background: #f0f6fb; border-color: #aac6db; border-left: 4px solid var(--accent-strong); }
@@ -69,17 +67,17 @@
 .detail-content .engineering-story-secondary h3 { font-size: clamp(1.35rem, 2vw, 1.65rem); }
 .detail-content .engineering-result { width: fit-content; max-width: 100%; margin: 0 auto 22px; padding: 12px 18px; border-radius: 4px; background: #e4eff7; color: #234f70; font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; line-height: 1.5; }
 
-/* Evidence is slightly wider, centered by grid alignment rather than offsets. */
+/* Primary content and evidence fill the same main lane. Small math stays local. */
 .detail-content .project-slideshow,
-.detail-content .metrics { width: min(var(--detail-evidence-width), 100cqi); max-width: none; margin: 24px auto; text-align: center; }
+.detail-content .metrics { width: 100%; max-width: none; margin: 24px 0; text-align: center; }
 .detail-content .chapter-narrative > .project-slideshow,
-.detail-content .engineering-story > .project-slideshow { justify-self: center; margin-inline: 0; }
+.detail-content .engineering-story > .project-slideshow { margin-inline: 0; }
 .detail-content .chapter-narrative > .project-slideshow { margin-block: 0; }
 .detail-content .slide-caption, .detail-content .slide-description { display: block; max-width: 70ch; margin-inline: auto; }
 .detail-content .slideshow-slide figcaption { text-align: center; }
 .detail-content .metrics { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
-.detail-content .project-section > .metrics:has(> div:only-child) { max-width: 360px; }
-.key-metrics { width: min(var(--detail-evidence-width), 100%); margin: 22px auto 24px; }
+.detail-content .project-section > .metrics:has(> div:only-child) { max-width: 360px; margin-inline: auto; }
+.key-metrics { width: 100%; margin: 22px 0 24px; }
 .key-metrics h2 { font-size: 1.2rem; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 14px; color: var(--accent-ink); }
 .detail-content .key-metrics .metrics { width: 100%; margin: 0; }
 .key-metrics .metrics > div { padding: 15px 14px; background: #f2f7fb; border: 1px solid var(--border); border-radius: 6px; text-align: left; }
@@ -107,43 +105,53 @@
   .contribution-items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (min-width: 1024px) {
-  .detail-top-main .breadcrumbs { padding-top: 14px; margin-bottom: 8px; }
-  .detail-top-main .project-hero, .detail-top-main .experience-hero { padding-block: 12px 22px; gap: 24px; }
-  .detail-top-main :is(.project-hero, .experience-hero) h1 { font-size: clamp(1.9rem, 2.6vw, 2.5rem); margin-bottom: 12px; }
-  .detail-top-main .project-subtitle { font-size: 1rem; line-height: 1.65; margin-bottom: 12px; }
-  .detail-top-main .project-position { margin-block: 10px 14px; }
+  .detail-top-main .breadcrumbs { padding-top: 11px; margin-bottom: 6px; }
+  .detail-top-main .project-hero, .detail-top-main .experience-hero { padding-block: 8px 14px; gap: 22px; }
+  .detail-top-main .project-hero:not(.project-hero-no-media), .detail-top-main .experience-hero-with-media { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+  .detail-top-main :is(.project-hero, .experience-hero) .eyebrow { margin-bottom: 6px; }
+  .detail-top-main :is(.project-hero, .experience-hero) h1 { font-size: clamp(1.65rem, 2.2vw, 2.15rem); margin-bottom: 9px; }
+  .detail-top-main .project-subtitle { font-size: 1rem; font-weight: 475; line-height: 1.6; margin-bottom: 10px; }
+  .detail-top-main .project-position { margin-block: 10px 12px; }
   .detail-top-main .project-position dd { font-size: 1rem; }
+  .detail-top-main .experience-period { margin-bottom: 12px; }
   .detail-top-main :is(.project-hero-image, .experience-hero-image),
-  .detail-top-main :is(.project-hero-image, .experience-hero-image) .media { height: 240px; }
-  .detail-content .contribution-block { padding: 18px 22px; margin-block: 14px 18px; }
-  .contribution-block h2 { font-size: 1.75rem; }
-  .contribution-block .contribution-role { font-size: 1.05rem; margin-bottom: 10px; }
-  .contribution-items { gap: 12px 24px; }
-  .contribution-items li { font-size: 1rem; line-height: 1.65; }
-  .detail-content .chapter-copy p, .detail-content .project-summary p { font-size: 1rem; line-height: 1.65; }
-  .detail-content .project-summary { padding: 18px 22px; margin-block: 20px; }
-  .detail-content .project-section { padding-block: 22px; }
-  .detail-content .project-section h2 { font-size: clamp(1.3rem, 2vw, 1.65rem); margin-bottom: 16px; }
-  .detail-content .chapter-narrative > .chapter-copy { padding: 22px; }
-  .detail-content .engineering-story { padding: 22px; margin-top: 24px; }
-  .detail-content .engineering-story-feature h3 { font-size: 1.6rem; }
-  .detail-content .engineering-story-secondary h3 { font-size: 1.45rem; }
-  .detail-content .metrics > div { padding: 16px; }
-  .key-metrics { margin-block: 18px 20px; }
-  .key-metrics h2 { font-size: 1.05rem; margin-bottom: 12px; }
-  .detail-content .key-metrics .metrics > div { padding: 12px 14px; }
-  .key-metrics .metrics strong { font-size: clamp(1.35rem, 1.8vw, 1.65rem); margin-bottom: 5px; }
-  .slideshow-viewport { height: clamp(260px, 35vw, 460px); }
+  .detail-top-main :is(.project-hero-image, .experience-hero-image) .media { height: 320px; background: transparent; }
+  .detail-content .contribution-block { padding: 16px 18px; margin-block: 12px 15px; }
+  .contribution-block h2 { font-size: 1.5rem; margin-bottom: 10px; }
+  .contribution-block .contribution-role { font-size: 1rem; margin-bottom: 9px; }
+  .contribution-items { gap: 10px 20px; }
+  .contribution-items li { font-size: .975rem; line-height: 1.55; }
+  .detail-content .chapter-copy p, .detail-content .project-summary p { font-size: 1rem; font-weight: 475; line-height: 1.6; }
+  .detail-content .project-summary { padding: 16px 18px; margin-block: 16px; }
+  .detail-content .project-summary p + p { margin-top: 12px; }
+  .detail-content .project-section { padding-block: 17px; }
+  .detail-content .project-section h2 { font-size: clamp(1.15rem, 1.7vw, 1.4rem); margin-bottom: 12px; }
+  .detail-content .chapter-narrative > .chapter-copy { padding: 18px; }
+  .detail-content .chapter-copy p { margin-bottom: 14px; }
+  .detail-content .chapter-copy > p:last-child { margin-bottom: 0; }
+  .detail-content .engineering-story { padding: 18px; margin-top: 20px; }
+  .detail-content .engineering-story h3 { font-size: 1.2rem; margin-bottom: 12px; }
+  .detail-content .engineering-story-feature h3 { font-size: 1.4rem; }
+  .detail-content .engineering-story-secondary h3 { font-size: 1.25rem; }
+  .detail-content .engineering-result { font-size: 1rem; padding: 10px 14px; margin-bottom: 16px; }
+  .detail-content .metrics > div { padding: 13px; }
+  .key-metrics { margin-block: 15px 16px; }
+  .key-metrics h2 { font-size: .95rem; margin-bottom: 10px; }
+  .detail-content .key-metrics .metrics > div { padding: 10px 12px; }
+  .key-metrics .metrics strong { font-size: clamp(1.3rem, 1.6vw, 1.5rem); margin-bottom: 4px; }
+  .slideshow-viewport { height: clamp(250px, 30vw, 400px); }
+  .detail-end-main > :is(.project-end, .experience-end) { margin-top: 22px; padding-top: 18px; }
 }
 @media (min-width: 1280px) {
-  .detail-grid { grid-template-columns: var(--detail-nav-width) minmax(0, 1fr); column-gap: var(--detail-nav-gap); }
+  .detail-grid { grid-template-columns: var(--detail-nav-width) minmax(0, var(--detail-main-width)); column-gap: var(--detail-nav-gap); justify-content: center; }
   .detail-top-main, .detail-content, .detail-end-main { grid-column: 2; }
-  .section-navigator { grid-column: 1; grid-row: 1; top: calc(var(--header-height, 52px) + 16px); display: flex; flex-direction: column; overflow-x: hidden; padding: 6px; margin-top: 14px; }
+  .section-navigator { grid-column: 1; grid-row: 1; top: calc(var(--header-height, 48px) + 14px); display: flex; flex-direction: column; overflow-x: hidden; padding: 5px; margin-top: 12px; }
   .section-nav-label { display: block; padding: 7px 8px; color: var(--text-secondary); font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; }
-  .section-navigator a { min-height: 40px; padding: 8px; border-left-width: 3px; font-size: .8rem; }
+  .section-navigator a { min-height: 36px; padding: 7px; border-left-width: 3px; font-size: .775rem; }
   .detail-content { grid-row: 1; }
 }
 @media (max-width: 1023px) {
+  :root { --detail-gutter: 20px; }
   .detail-top-main .project-hero, .detail-top-main .experience-hero-with-media { grid-template-columns: minmax(0, 1fr); gap: 22px; }
 }
 @media (max-width: 600px) {
