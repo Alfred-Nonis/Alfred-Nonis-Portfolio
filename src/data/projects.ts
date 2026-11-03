@@ -124,14 +124,6 @@ export const projects: Project[] = [
         ],
         metrics: [
           {
-            value: "~96 → ~65 lb",
-            label: "Roll-cage mass"
-          },
-          {
-            value: "~31%",
-            label: "Mass reduction"
-          },
-          {
             value: "~1.3 / ~1.5",
             label: "Front / rear factor of safety"
           }
@@ -551,12 +543,6 @@ export const projects: Project[] = [
           "The idea was not just to make a smoother funnel for the intake. I wanted the shape and length of the stack to actually help get more air into the engine.",
           "The bellmouth was there to reduce the losses as air entered the intake. From there, I looked at the intake as a pressure-wave problem too. Inertial charging helps keep the air moving into the cylinder, while Helmholtz-type resonance can create a positive pressure wave near the intake event if the runner length is in the right range."
         ],
-        metrics: [
-          {
-            value: "5%",
-            label: "Target improvement"
-          }
-        ],
         bodyAfterMedia: [
           "The target we set was a 5% improvement. I worked through the initial geometry and hand calculations before moving into CAD, then used those numbers as the starting point instead of just guessing at the runner length."
         ],
@@ -599,21 +585,6 @@ export const projects: Project[] = [
         body: [
           "Once the second prototype fit correctly, we mounted it to the Predator engine and used a Hall-effect sensor to keep track of RPM during testing.",
           "We tested the engine up to roughly 2,000 RPM. Across the measured range, the final intake produced a 7.2% average torque increase."
-        ],
-        metrics: [
-          {
-            value: "5%",
-            label: "Target improvement"
-          },
-          {
-            value: "7.2%",
-            label: "Average torque increase",
-            note: "Across the tested RPM range"
-          },
-          {
-            value: "~2,000 RPM",
-            label: "Tested range"
-          }
         ],
         images: [
           {

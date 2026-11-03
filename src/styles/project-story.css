@@ -1,149 +1,93 @@
-/* Detail-page narrative: wider evidence, centered reading blocks. */
-:is(.project-detail, .experience-detail) .project-section {
-  padding-block: 16px 14px;
-  text-align: center;
+﻿/* Shared detail geometry: every page uses one rail and one main content lane. */
+:root {
+  --site-shell-width: 1360px;
+  --detail-shell-width: var(--site-shell-width);
+  --detail-nav-width: 160px;
+  --detail-nav-gap: 24px;
+  --detail-reading-width: 960px;
+  --detail-evidence-width: 1000px;
+  --detail-gutter: 24px;
 }
-:is(.project-detail, .experience-detail) .project-section > .eyebrow,
-:is(.project-detail, .experience-detail) .project-section h2,
-:is(.project-detail, .experience-detail) .project-section h3 {
-  text-align: center;
-  margin-inline: auto;
-}
-:is(.project-detail, .experience-detail) .project-section h2 { width: fit-content; max-width: 100%; margin-bottom: 20px; }
-:is(.project-detail, .experience-detail) .chapter-copy,
-:is(.project-detail, .experience-detail) .project-section p,
-:is(.project-detail, .experience-detail) .section-intro {
-  width: min(920px, 100%);
-  max-width: none;
-  margin-inline: auto;
-  text-align: center;
-}
-:is(.project-detail, .experience-detail) .project-section p { margin-bottom: 18px; }
-:is(.project-detail, .experience-detail) .chapter-copy > p:last-child { margin-bottom: 0; }
-:is(.project-detail, .experience-detail) .project-section > :last-child,
-:is(.project-detail, .experience-detail) .engineering-story > :last-child { margin-bottom: 0; }
-:is(.project-detail, .experience-detail) .chapter-copy-after-media { margin-top: 24px; }
-:is(.project-detail, .experience-detail) .project-slideshow { width: 100%; max-width: 1000px; margin: 24px auto; }
-:is(.project-detail, .experience-detail) .slide-caption,
-:is(.project-detail, .experience-detail) .slide-description { display: block; max-width: 70ch; margin-inline: auto; }
-:is(.project-detail, .experience-detail) .slideshow-slide figcaption { text-align: center; }
-:is(.project-detail, .experience-detail) .metrics { max-width: 815px; margin: 24px auto 0; text-align: center; }
-:is(.project-detail, .experience-detail) .engineering-story {
-  max-width: none;
-  margin: 28px auto 0;
-  padding-top: 28px;
-  border: 0;
-  border-top: 1px solid var(--border);
-  border-radius: 0;
-  background: transparent;
-}
-:is(.project-detail, .experience-detail) .engineering-story h3 { color: var(--accent-ink); font-size: clamp(1.2rem, 2vw, 1.45rem); margin-bottom: 18px; }
-:is(.project-detail, .experience-detail) .engineering-story > .chapter-copy { padding: 0; }
-.calculation-card { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 68ch; margin: 22px auto; padding: 18px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); }
-:is(.project-detail, .experience-detail) .calculation-card p { width: 100%; min-width: 0; margin: 0; padding: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9rem; line-height: 1.65; white-space: pre-line; overflow-wrap: anywhere; }
-.project-detail .project-hero > div:first-child { max-width: 82ch; text-align: left; margin-inline: 0; }
-.project-detail .project-hero h1 { margin-inline: 0; }
-.project-detail .project-subtitle { max-width: 76ch; margin-inline: 0; text-align: left; }
-.project-detail .project-hero dl, .project-detail .project-hero .tags { justify-content: flex-start; }
-.experience-detail .tags { justify-content: center; }
-.project-detail > .project-summary { width: min(920px, calc(100% - 48px)); max-width: none; margin: 28px auto; text-align: left; }
-.project-detail > .project-summary p { text-align: left; }
-.project-hero:has(.project-hero-image-wide) { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
-.project-hero .project-hero-image-wide,
-.project-hero .project-hero-image-wide .media { position: relative; width: 100%; height: auto; aspect-ratio: auto; padding: 0; background: transparent; overflow: visible; }
-.project-hero .project-hero-image-wide .media img { display: block; width: 100%; height: auto; min-height: 0; padding: 0; filter: drop-shadow(0 0 12px #90b6cd55); }
-.experience-detail .experience-hero { text-align: center; padding-bottom: 28px; }
-.experience-detail .experience-hero h1, .experience-detail .experience-description { margin-inline: auto; }
-.experience-detail .experience-description { text-align: center; max-width: 82ch; }
-.experience-detail .experience-description p { margin-bottom: 18px; }
-
-.page-intro > p, .experience-card p, .experience-empty p { max-width: 76ch; }
-.home-approach > p { max-width: 76ch; }
-
-@media (min-width: 1024px) {
-  .project-detail > .breadcrumbs, .project-detail > .project-hero, .project-detail > .case-study, .project-detail > .project-end { width: min(1100px, calc(100% - 48px)); }
-}
-
-@media (max-width: 820px) {
-  .project-hero:has(.project-hero-image-wide) { grid-template-columns: minmax(0, 1fr); }
-}
-
-@media (max-width: 600px) {
-  .project-detail > .breadcrumbs, .project-detail > .project-hero, .project-detail > .project-summary, .project-detail > .case-study, .project-detail > .project-end { width: calc(100% - 40px); }
-  :is(.project-detail, .experience-detail) .project-section { padding-block: 18px 16px; }
-  .calculation-card { grid-template-columns: minmax(0, 1fr); padding: 12px; gap: 6px; }
-}
-
-/* Recruiter readability: one main narrative surface per chapter. */
-:is(.project-detail, .experience-detail) .chapter-narrative {
-  width: min(940px, 100%);
-  padding: 28px 32px;
-  border: 1px solid #c0d1df;
-  border-radius: 8px;
-  background: #fcfdfd;
-  box-shadow: 0 3px 12px #27323a08;
-}
-:is(.project-detail, .experience-detail) .chapter-copy p,
-:is(.project-detail, .experience-detail) .section-text > p,
-:is(.project-detail, .experience-detail) .project-summary p,
-.contribution-block p {
-  color: #303c46;
-  font-size: 1.075rem;
-  line-height: 1.75;
-}
-:is(.project-detail, .experience-detail) .project-section { padding-block: 32px; }
-:is(.project-detail, .experience-detail) .engineering-story-feature {
-  width: min(940px, 100%);
-  margin-top: 36px;
-  padding: 28px 32px;
-  border: 1px solid #aac6db;
-  border-left: 4px solid var(--accent-strong);
-  border-radius: 8px;
-  background: #f0f6fb;
-}
-:is(.project-detail, .experience-detail) .engineering-story-feature h3 { font-size: clamp(1.45rem, 2.3vw, 1.8rem); }
-:is(.project-detail, .experience-detail) .engineering-story-feature > .eyebrow {
-  color: var(--accent-ink);
-  font-size: .75rem;
-  font-weight: 750;
-  line-height: 1.5;
-  margin-bottom: 12px;
-}
-:is(.project-detail, .experience-detail) .project-hero h1,
-.experience-detail .experience-hero h1 { font-size: clamp(2rem, 3vw, 2.8rem); }
-.experience-detail .experience-hero,
-.experience-detail .experience-hero h1 { text-align: left; }
-.experience-detail .tags { justify-content: flex-start; }
-.experience-detail { max-width: none; padding-inline: 0; }
-.experience-detail > :is(.breadcrumbs, .experience-hero, .experience-end) { width: min(1100px, calc(100% - 48px)); margin-inline: auto; }
-
-/* Shared detail layout leaves the existing wide evidence and narrative intact. */
-.detail-layout { --section-offset: 144px; width: min(1100px, calc(100% - 48px)); margin: 0 auto 32px; }
-.detail-content { min-width: 0; }
-.detail-content .case-study { width: 100%; max-width: none !important; }
+:is(.project-detail, .experience-detail) { max-width: none; padding: 0 0 50px; }
+.detail-grid { display: grid; grid-template-columns: minmax(0, 1fr); width: min(var(--detail-shell-width), calc(100% - 2 * var(--detail-gutter))); margin-inline: auto; }
+.detail-top-main, .detail-content, .detail-end-main { min-width: 0; }
+.detail-content { container-type: inline-size; }
+.detail-layout { --section-offset: 144px; position: relative; align-items: start; }
+.detail-overview { display: flow-root; }
 .detail-overview, .detail-content .project-section { scroll-margin-top: var(--section-offset); }
-.detail-content .project-summary { width: min(940px, 100%); max-width: none; margin: 24px auto 28px; text-align: left; }
-.detail-content .project-summary p { text-align: left; }
-.contribution-block { max-width: 940px; margin: 28px auto; padding: 26px 32px; background: #fcfdfd; border: 1px solid #b6ccdd; border-top: 3px solid var(--accent-strong); border-radius: 8px; }
-.contribution-block h2 { font-size: 1.45rem; margin-bottom: 14px; color: var(--accent-ink); }
-.contribution-block h3 { font-size: 1.15rem; line-height: 1.4; margin-bottom: 10px; }
-.contribution-block p { margin-bottom: 0; }
-.key-metrics { max-width: 1000px; margin: 30px auto 16px; }
-.key-metrics h2 { font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; color: var(--accent-ink); margin-bottom: 14px; }
-.key-metrics .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); max-width: none; gap: 12px; margin: 0; }
-.key-metrics .metrics > div { padding: 18px 14px; background: #f2f7fb; border: 1px solid var(--border); border-radius: 6px; text-align: left; }
+.detail-top-main > :is(.breadcrumbs, .project-hero, .experience-hero),
+.detail-end-main > :is(.project-end, .experience-end) { width: min(var(--detail-reading-width), 100%); max-width: none; margin-inline: auto; }
+.detail-top-main .breadcrumbs { padding-top: 20px; margin-bottom: 10px; }
+
+/* Hero media is always part of the hero, independently of contributions. */
+.detail-top-main .project-hero, .detail-top-main .experience-hero-with-media { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 28px; align-items: center; padding-block: 16px 26px; }
+.detail-top-main .project-hero-no-media { grid-template-columns: minmax(0, 1fr); }
+.detail-top-main .experience-hero { text-align: left; padding-block: 16px 26px; }
+.detail-top-main :is(.project-hero, .experience-hero) > div:first-child { width: 100%; max-width: none; text-align: left; }
+.detail-top-main :is(.project-hero, .experience-hero) h1 { max-width: none; margin: 0 0 14px; font-size: clamp(2rem, 4vw, 2.75rem); overflow-wrap: anywhere; }
+.detail-top-main .project-subtitle { width: 100%; max-width: none; margin: 0 0 16px; text-align: left; font-size: 1.075rem; line-height: 1.7; }
+.detail-top-main .project-position { justify-content: flex-start; margin: 12px 0 18px; }
+.project-position dt { font-size: .72rem; letter-spacing: .12em; margin-bottom: 4px; }
+.project-position dd { font-size: 1.1rem; font-weight: 650; line-height: 1.45; }
+.detail-top-main .tags { justify-content: flex-start; }
+.detail-top-main :is(.project-hero-image, .experience-hero-image),
+.detail-top-main :is(.project-hero-image, .experience-hero-image) .media { width: 100%; height: 270px; aspect-ratio: auto; padding: 0; background: var(--media-well); border-radius: 6px; overflow: hidden; }
+.detail-top-main :is(.project-hero-image, .experience-hero-image) img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
+.detail-top-main .experience-period { margin-bottom: 18px; }
+
+/* Narrative surfaces share their outer geometry, including engineering features. */
+.detail-content :is(.contribution-block, .project-summary, .chapter-narrative, .engineering-story) { width: min(var(--detail-reading-width), 100%); max-width: none; margin-inline: auto; border: 1px solid #c0d1df; border-radius: 8px; background: #fcfdfd; box-shadow: 0 3px 12px #27323a08; }
+.detail-content .contribution-block { margin-block: 18px 22px; padding: 20px 28px; border-top: 3px solid var(--accent-strong); text-align: left; }
+.contribution-block h2 { font-size: clamp(1.6rem, 2.5vw, 2.1rem); margin-bottom: 12px; color: var(--accent-ink); }
+.contribution-block .contribution-role { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; line-height: 1.45; margin-bottom: 12px; color: #263540; }
+.contribution-items { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px 32px; padding-left: 22px; margin: 0; }
+.contribution-items li { padding-left: 3px; color: #263540; font-size: 1.025rem; font-weight: 500; line-height: 1.6; }
+.contribution-items li::marker { color: var(--accent-strong); }
+.detail-content .project-summary { display: block; margin-block: 24px; padding: 22px 24px; border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0; text-align: left; }
+.detail-content .project-summary p { max-width: none; margin: 0; text-align: left; }
+.detail-content .project-summary p + p { margin-top: 16px; }
+.detail-content .case-study { width: 100%; max-width: none !important; }
+.detail-content .project-section { position: relative; padding-block: 28px; text-align: center; }
+.detail-content .project-section > .eyebrow,
+.detail-content .project-section h2,
+.detail-content .project-section h3 { text-align: center; margin-inline: auto; }
+.detail-content .project-section h2 { width: fit-content; max-width: 100%; margin-bottom: 20px; }
+.detail-content .chapter-copy { width: 100%; max-width: none; margin-inline: auto; text-align: center; }
+.detail-content .chapter-copy p, .detail-content .project-summary p { color: #263540; font-size: 1.075rem; font-weight: 450; line-height: 1.75; }
+.detail-content .chapter-copy p { max-width: none; margin: 0 0 18px; }
+.detail-content .chapter-copy > p:last-child { margin-bottom: 0; }
+.detail-content .chapter-narrative { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; padding: 0; overflow: visible; }
+.detail-content .chapter-narrative > .chapter-copy { padding: 28px 24px; }
+.detail-content .chapter-copy-after-media { margin-top: 0; }
+.detail-content .engineering-story { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; margin-top: 28px; padding: 26px 28px; }
+.detail-content .engineering-story h3 { color: var(--accent-ink); font-size: clamp(1.2rem, 2vw, 1.45rem); margin-bottom: 18px; }
+.detail-content .engineering-story > .chapter-copy { padding: 0; }
+.detail-content .engineering-story-feature { background: #f0f6fb; border-color: #aac6db; border-left: 4px solid var(--accent-strong); }
+.detail-content .engineering-story-feature h3 { font-size: clamp(1.45rem, 2.3vw, 1.8rem); }
+.detail-content .engineering-story-feature > .eyebrow { color: var(--accent-ink); font-size: .75rem; font-weight: 750; line-height: 1.5; margin-bottom: 12px; }
+.detail-content .engineering-story-secondary { background: #f7fafc; border-left: 3px solid #5785a7; border-color: #b5cadb; border-left-color: #5785a7; }
+.detail-content .engineering-story-secondary h3 { font-size: clamp(1.35rem, 2vw, 1.65rem); }
+.detail-content .engineering-result { width: fit-content; max-width: 100%; margin: 0 auto 22px; padding: 12px 18px; border-radius: 4px; background: #e4eff7; color: #234f70; font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; line-height: 1.5; }
+
+/* Evidence is slightly wider, centered by grid alignment rather than offsets. */
+.detail-content .project-slideshow,
+.detail-content .metrics { width: min(var(--detail-evidence-width), 100cqi); max-width: none; margin: 24px auto; text-align: center; }
+.detail-content .chapter-narrative > .project-slideshow,
+.detail-content .engineering-story > .project-slideshow { justify-self: center; margin-inline: 0; }
+.detail-content .chapter-narrative > .project-slideshow { margin-block: 0; }
+.detail-content .slide-caption, .detail-content .slide-description { display: block; max-width: 70ch; margin-inline: auto; }
+.detail-content .slideshow-slide figcaption { text-align: center; }
+.detail-content .metrics { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.detail-content .project-section > .metrics:has(> div:only-child) { max-width: 360px; }
+.key-metrics { width: min(var(--detail-evidence-width), 100%); margin: 22px auto 24px; }
+.key-metrics h2 { font-size: 1.2rem; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 14px; color: var(--accent-ink); }
+.detail-content .key-metrics .metrics { width: 100%; margin: 0; }
+.key-metrics .metrics > div { padding: 15px 14px; background: #f2f7fb; border: 1px solid var(--border); border-radius: 6px; text-align: left; }
 .key-metrics .metrics strong { display: block; font-size: clamp(1.45rem, 2vw, 1.9rem); line-height: 1.25; overflow-wrap: anywhere; margin-bottom: 7px; }
-.key-metrics .metrics span { font-size: .88rem; line-height: 1.5; }
-
-.section-navigator { position: sticky; top: var(--header-height, 66px); z-index: 20; display: flex; gap: 4px; max-width: 100%; min-width: 0; padding: 6px; overflow-x: auto; overscroll-behavior-x: contain; background: #f8fafb; border: 1px solid var(--border-strong); border-radius: 6px; scrollbar-width: thin; }
-.section-nav-label { display: none; }
-.section-navigator a { display: flex; flex: 0 0 auto; align-items: center; min-height: 44px; padding: 9px 13px; color: #384e60; border: 1px solid transparent; border-radius: 4px; font-size: .85rem; line-height: 1.4; }
-.section-navigator a:hover { background: #e8f0f7; }
-.section-navigator a[aria-current="location"] { background: #dfedf8; color: #1e557d; border-color: #9bbcd4; font-weight: 700; }
-.section-navigator a:focus-visible { outline-offset: -2px; }
-
-/* The media viewport sets control position; captions flow below the controls. */
-.project-slideshow { width: min(1000px, 100%); margin-inline: auto; }
+.key-metrics .metrics span { font-family: var(--font-body); font-weight: 500; font-size: .95rem; line-height: 1.5; }
+.calculation-card { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: min(68ch, 100%); margin: 22px auto; padding: 18px; border: 1px solid var(--border); border-radius: 4px; background: var(--surface); }
+.detail-content .calculation-card p { width: 100%; min-width: 0; margin: 0; padding: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9rem; line-height: 1.65; white-space: pre-line; overflow-wrap: anywhere; }
+.detail-content .engineering-story > :last-child { margin-bottom: 0; }
 .slideshow-viewport { height: clamp(280px, 42vw, 520px); background: var(--media-well); }
 .slideshow-viewport .media-button { height: 100%; width: 100%; }
 .slideshow-viewport img { min-height: 0; width: 100%; height: 100%; }
@@ -151,40 +95,68 @@
 .slideshow-controls button { flex: 0 0 44px; width: 44px; height: 44px; }
 .slideshow-slide figcaption { padding: 14px 18px; }
 
-/* Supporting text becomes easier to scan without enlarging the hero or navbar. */
-.hero-bio, .home-approach > p, .home-contact-cta p, .page-intro > p:last-child { font-size: 1.05rem; line-height: 1.75; color: #3d4d5a; }
-.project-subtitle { font-size: 1.05rem; line-height: 1.75; color: #3d4d5a; }
-.project-card p, .experience-card .experience-description { font-size: 1rem; line-height: 1.65; color: #3d4d5a; }
-.project-card .role, .experience-card .experience-role { font-size: .95rem; }
-.project-card .eyebrow { font-size: .72rem; }
-.project-card h3 { font-size: 1.2rem; }
-.project-card .tags li, .project-hero .tags li, .experience-card .tags li, .experience-hero .tags li { font-size: .78rem; padding: 5px 8px; }
-.project-card { cursor: pointer; min-width: 0; }
-.project-card-content { flex: 1; }
-.project-card:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 4px; border-color: var(--accent); box-shadow: 0 8px 20px #0d2f4f14; }
-.project-card:hover h3, .project-card:focus-visible h3 { color: var(--accent-ink); }
-.skill-groups h3 { font-size: 1rem; color: #374957; }
-.skill-chips li { font-size: .95rem; padding: 8px 14px; border-color: #8eacc2; color: #234e6e; background: #edf4f9; }
-.contact-list a { font-size: 1.05rem; }
-.contact-page > p:not(.eyebrow):not(.contact-note) { line-height: 1.75; color: #3d4d5a; }
+.section-navigator { position: sticky; top: var(--header-height, 66px); z-index: 20; display: flex; gap: 4px; max-width: 100%; min-width: 0; padding: 6px; overflow-x: auto; overscroll-behavior-x: contain; background: #f8fafb; border: 1px solid var(--border-strong); border-radius: 6px; scrollbar-width: thin; }
+.section-nav-label { display: none; }
+.section-navigator a { display: flex; flex: 0 0 auto; align-items: center; min-height: 44px; padding: 9px 13px; color: #384e60; border: 1px solid transparent; border-radius: 4px; font-size: .85rem; line-height: 1.4; }
+.section-navigator a:hover { background: #e8f0f7; }
+.section-navigator a[aria-current="location"] { background: #dfedf8; color: #1e557d; border-color: #9bbcd4; font-weight: 700; }
+.section-navigator a:focus-visible { outline-offset: -2px; }
+.detail-end-main > :is(.project-end, .experience-end) { margin-top: 28px; padding-top: 24px; }
 
+@media (min-width: 900px) {
+  .contribution-items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .detail-top-main .breadcrumbs { padding-top: 14px; margin-bottom: 8px; }
+  .detail-top-main .project-hero, .detail-top-main .experience-hero { padding-block: 12px 22px; gap: 24px; }
+  .detail-top-main :is(.project-hero, .experience-hero) h1 { font-size: clamp(1.9rem, 2.6vw, 2.5rem); margin-bottom: 12px; }
+  .detail-top-main .project-subtitle { font-size: 1rem; line-height: 1.65; margin-bottom: 12px; }
+  .detail-top-main .project-position { margin-block: 10px 14px; }
+  .detail-top-main .project-position dd { font-size: 1rem; }
+  .detail-top-main :is(.project-hero-image, .experience-hero-image),
+  .detail-top-main :is(.project-hero-image, .experience-hero-image) .media { height: 240px; }
+  .detail-content .contribution-block { padding: 18px 22px; margin-block: 14px 18px; }
+  .contribution-block h2 { font-size: 1.75rem; }
+  .contribution-block .contribution-role { font-size: 1.05rem; margin-bottom: 10px; }
+  .contribution-items { gap: 12px 24px; }
+  .contribution-items li { font-size: 1rem; line-height: 1.65; }
+  .detail-content .chapter-copy p, .detail-content .project-summary p { font-size: 1rem; line-height: 1.65; }
+  .detail-content .project-summary { padding: 18px 22px; margin-block: 20px; }
+  .detail-content .project-section { padding-block: 22px; }
+  .detail-content .project-section h2 { font-size: clamp(1.3rem, 2vw, 1.65rem); margin-bottom: 16px; }
+  .detail-content .chapter-narrative > .chapter-copy { padding: 22px; }
+  .detail-content .engineering-story { padding: 22px; margin-top: 24px; }
+  .detail-content .engineering-story-feature h3 { font-size: 1.6rem; }
+  .detail-content .engineering-story-secondary h3 { font-size: 1.45rem; }
+  .detail-content .metrics > div { padding: 16px; }
+  .key-metrics { margin-block: 18px 20px; }
+  .key-metrics h2 { font-size: 1.05rem; margin-bottom: 12px; }
+  .detail-content .key-metrics .metrics > div { padding: 12px 14px; }
+  .key-metrics .metrics strong { font-size: clamp(1.35rem, 1.8vw, 1.65rem); margin-bottom: 5px; }
+  .slideshow-viewport { height: clamp(260px, 35vw, 460px); }
+}
 @media (min-width: 1280px) {
-  .detail-layout { width: min(1320px, calc(100% - 48px)); display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 24px; align-items: start; }
-  .section-navigator { top: calc(var(--header-height, 58px) + 20px); display: flex; flex-direction: column; overflow-x: hidden; padding: 8px; margin-top: 24px; }
-  .section-nav-label { display: block; padding: 8px 9px; color: var(--text-secondary); font-size: .68rem; text-transform: uppercase; letter-spacing: .1em; }
-  .section-navigator a { flex: 0 0 auto; padding-inline: 9px; border-left-width: 3px; }
+  .detail-grid { grid-template-columns: var(--detail-nav-width) minmax(0, 1fr); column-gap: var(--detail-nav-gap); }
+  .detail-top-main, .detail-content, .detail-end-main { grid-column: 2; }
+  .section-navigator { grid-column: 1; grid-row: 1; top: calc(var(--header-height, 52px) + 16px); display: flex; flex-direction: column; overflow-x: hidden; padding: 6px; margin-top: 14px; }
+  .section-nav-label { display: block; padding: 7px 8px; color: var(--text-secondary); font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; }
+  .section-navigator a { min-height: 40px; padding: 8px; border-left-width: 3px; font-size: .8rem; }
+  .detail-content { grid-row: 1; }
+}
+@media (max-width: 1023px) {
+  .detail-top-main .project-hero, .detail-top-main .experience-hero-with-media { grid-template-columns: minmax(0, 1fr); gap: 22px; }
 }
 @media (max-width: 600px) {
-  .detail-layout { width: calc(100% - 40px); }
-  .experience-detail > :is(.breadcrumbs, .experience-hero, .experience-end) { width: calc(100% - 40px); }
-  :is(.project-detail, .experience-detail) .chapter-narrative,
-  :is(.project-detail, .experience-detail) .engineering-story-feature,
-  .contribution-block { padding: 20px; }
-  .section-navigator { padding: 4px; }
-  .section-navigator a { padding-inline: 11px; font-size: .8rem; }
-  .key-metrics .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  :root { --detail-gutter: 20px; }
+  .detail-content .contribution-block { padding: 20px; }
+  .contribution-items { gap: 14px; }
+  .detail-content .chapter-narrative > .chapter-copy, .detail-content .engineering-story { padding: 22px 20px; }
+  .detail-content .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .detail-content .project-section > .metrics:has(> div:only-child) { grid-template-columns: minmax(0, 1fr); }
   .key-metrics .metrics > div { padding: 14px 11px; }
   .key-metrics .metrics strong { font-size: 1.4rem; }
+  .calculation-card { grid-template-columns: minmax(0, 1fr); padding: 12px; gap: 6px; }
+  .section-navigator { padding: 4px; }
+  .section-navigator a { padding-inline: 11px; font-size: .8rem; }
   .slideshow-viewport { height: clamp(250px, 76vw, 390px); }
-  .slideshow-viewport .media-button { height: 100%; }
 }

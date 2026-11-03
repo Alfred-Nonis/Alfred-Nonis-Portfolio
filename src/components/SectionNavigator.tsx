@@ -7,7 +7,7 @@ export const chapterId = (title: string) => `chapter-${title.toLowerCase().repla
 
 export function DetailSections({ sections, children }: { sections: ProjectSection[]; children: ReactNode }) {
   const items = [{ id: 'overview', title: 'Overview' }, ...sections.filter(section => section.type === 'chapter').map(section => ({ id: chapterId(section.title), title: section.title }))]
-  return <div className="detail-layout">
+  return <div className="detail-layout detail-grid">
     <SectionNavigator key={items.map(item => item.id).join('|')} items={items} />
     <div className="detail-content">{children}</div>
   </div>

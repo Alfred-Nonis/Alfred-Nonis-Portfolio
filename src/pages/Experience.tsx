@@ -5,7 +5,7 @@ import { ImageTile } from '../components/Media'
 import { Tags } from '../components/ProjectCard'
 import { ProjectSectionRenderer } from '../components/ProjectSectionRenderer'
 import { ContributionBlock } from '../components/ContributionBlock'
-import { DetailSections } from '../components/SectionNavigator'
+import { DetailShell } from '../components/DetailShell'
 
 export function Experience() {
   return <main className="inner-page experience-page">
@@ -22,6 +22,7 @@ export function ExperienceDetail() {
   if (!experience) return <main className="inner-page"><h1>Experience not found.</h1><Link className="button" to="/experience">Industry Experience</Link></main>
   if (!experience.sections?.length) return <Navigate to={experienceHref(experience)} replace />
   return <main className="inner-page experience-page experience-detail">
+    <DetailShell sections={experience.sections} top={<>
     <div className="breadcrumbs"><Link to="/experience">Industry Experience</Link><span>/</span><span>{experience.organization}</span></div>
     <header className={`experience-hero${experience.heroImage ? ' experience-hero-with-media' : ''}`}>
       <div><p className="eyebrow">Industry Experience</p><h1>{experience.organization}</h1>
@@ -30,13 +31,12 @@ export function ExperienceDetail() {
       </div>
       {experience.heroImage && <div className="experience-hero-image"><ImageTile image={experience.heroImage} priority /></div>}
     </header>
-    <DetailSections sections={experience.sections}>
+    </>} end={<div className="experience-end"><Link className="text-link" to="/experience">View all industry experience <span aria-hidden="true">→</span></Link></div>}>
       <div id="overview" tabIndex={-1} className="detail-overview">
         {experience.contribution && <ContributionBlock contribution={experience.contribution} />}
         <div className="project-summary">{(experience.overview ?? [experience.summary]).map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div>
       </div>
       {experience.sections.map((section, index) => <ProjectSectionRenderer section={section} key={`${experience.slug}-${index}`} />)}
-    </DetailSections>
-    <div className="experience-end"><Link className="text-link" to="/experience">View all industry experience <span aria-hidden="true">→</span></Link></div>
+    </DetailShell>
   </main>
 }
