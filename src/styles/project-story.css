@@ -1,10 +1,10 @@
 ﻿/* Shared detail geometry: every page uses one rail and one main content lane. */
 :root {
-  --site-shell-width: 1360px;
-  --detail-shell-width: 1320px;
+  --site-shell-width: 1180px;
+  --detail-shell-width: var(--site-shell-width);
   --detail-nav-width: 150px;
   --detail-nav-gap: 22px;
-  --detail-main-width: 1040px;
+  --detail-main-width: 960px;
   --detail-gutter: 24px;
 }
 :is(.project-detail, .experience-detail) { max-width: none; padding: 0 0 50px; }
@@ -115,7 +115,7 @@
   .detail-top-main .project-position dd { font-size: 1rem; }
   .detail-top-main .experience-period { margin-bottom: 12px; }
   .detail-top-main :is(.project-hero-image, .experience-hero-image),
-  .detail-top-main :is(.project-hero-image, .experience-hero-image) .media { height: 320px; background: transparent; }
+  .detail-top-main :is(.project-hero-image, .experience-hero-image) .media { height: 300px; background: transparent; }
   .detail-content .contribution-block { padding: 16px 18px; margin-block: 12px 15px; }
   .contribution-block h2 { font-size: 1.5rem; margin-bottom: 10px; }
   .contribution-block .contribution-role { font-size: 1rem; margin-bottom: 9px; }

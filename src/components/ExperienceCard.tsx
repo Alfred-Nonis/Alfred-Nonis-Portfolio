@@ -1,23 +1,19 @@
 import { Link } from 'react-router-dom'
 import { experienceHref, type IndustryExperience } from '../data/experience'
 import { ImageTile } from './Media'
-import { Tags } from './ProjectCard'
+import { CardContent } from './CardContent'
 
 export function ExperienceCard({ experience, compact = false }: { experience: IndustryExperience; compact?: boolean }) {
   const hasDetail = !!experience.sections?.length
   const titleId = `experience-${experience.slug}-${compact ? 'preview' : 'card'}-title`
-  const Heading = compact ? 'h3' : 'h2'
   const company = compact ? experience.shortName || experience.organization : experience.organization
+  const showImage = !compact && !!experience.heroImage
 
   return <Link to={experienceHref(experience)} id={compact ? undefined : experience.slug}
-    className={`experience-card${compact ? ' experience-card-compact' : ''}`} aria-labelledby={titleId}>
-    {!compact && experience.heroImage && <div className="experience-card-image"><ImageTile image={experience.heroImage} /></div>}
-    <Heading id={titleId}>{company}</Heading>
-    <p className="experience-role">{experience.role}</p>
-    <p className="experience-period">{experience.period}</p>
-    {!compact && <><p className="experience-description">{experience.summary}</p><Tags tags={experience.tags} /></>}
-    <span className="text-link experience-card-link" aria-hidden="true">
-      {hasDetail ? 'View experience' : 'View on overview'} <span aria-hidden="true">→</span>
-    </span>
+    className={`experience-card work-card${compact ? ' experience-card-compact work-card-compact' : ''}${showImage ? ' work-card-with-media' : ''}`} aria-labelledby={titleId}>
+    {showImage && experience.heroImage && <div className="experience-card-image work-card-image"><ImageTile image={experience.heroImage} /></div>}
+    <CardContent eyebrow="Industry Experience" title={company} titleId={titleId} heading={compact ? 'h3' : 'h2'}
+      summary={experience.summary} role={experience.role} period={experience.period} tags={experience.tags}
+      action={hasDetail ? 'View experience' : 'View on overview'} className="experience-card-content" />
   </Link>
 }
